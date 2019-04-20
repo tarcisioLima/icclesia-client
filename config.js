@@ -10,11 +10,11 @@ if((process.env.ENV).toUpperCase() == 'DEVELOPMENT'){
     API_URL = process.env.DEV_API_URL
     ISDEV = true;
 }else if((process.env.ENV).toUpperCase() == 'PRODUCTION'){
-    const PORT = process.env.PROD_PORT
-    const API_URL = process.env.PROD_API_URL
-    const ISDEV = false;
+    PORT = process.env.PROD_PORT
+    API_URL = process.env.PROD_API_URL
+    ISDEV = false;
 }else{
-    const ISDEV = false;
+    ISDEV = false;
     throw new Error('Atributo ENV em .env incorreto ou não encontrado.')
 }
 

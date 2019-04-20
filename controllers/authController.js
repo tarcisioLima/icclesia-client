@@ -4,7 +4,7 @@ const rp      = require('request-promise-native')
 const config  = require('../config')
 
 router.post('/login', (req, res) => {
-    rp.post(config.API_URL + 'auth/login', {'content-type': 'application/json'})    
+    rp.post(config.API_URL + 'auth/login', req.body)    
     .then((body) => {
         console.log('deu bom')
         res.send(data); 
