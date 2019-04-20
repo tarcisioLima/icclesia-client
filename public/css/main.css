@@ -10115,6 +10115,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 15px;
   }
 }
+/* Elements */
 .btn-default {
   border-radius: 30px;
   background: #867444;
@@ -10126,9 +10127,13 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   align-items: center;
   font-weight: 600;
+  transition: all 0.3s ease-in-out;
 }
 .btn-default:hover {
   background: #645733;
+}
+.btn-default.b-none {
+  border: none;
 }
 
 /* Components */

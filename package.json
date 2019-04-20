@@ -2,9 +2,9 @@
   "name": "icclesia-client",
   "version": "1.0.0",
   "description": "client server for icclesia project, which's a social media. ",
-  "main": "nodemon -e .js,njk ./server.js",
+  "main": "nodemon -e .js,njk -r dotenv/config ./server.js",
   "scripts": {
-    "start": "nodemon -e .js,njk ./server.js",
+    "start": "nodemon -e .js,njk -r dotenv/config ./server.js",
     "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,8 +24,12 @@
   "homepage": "https://github.com/tarcisioLima/icclesia-client#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "dotenv": "^7.0.0",
     "express": "^4.16.4",
+    "express-session": "^1.16.1",
     "nunjucks": "^3.2.0",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
     "vue": "^2.6.10"
   },
   "devDependencies": {

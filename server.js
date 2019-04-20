@@ -2,11 +2,28 @@ const express    = require('express')
 const path       = require('path')
 const nunjucks   = require('nunjucks')
 const bodyparser = require('body-parser')
+const session    = require('express-session')
+const config     = require('./config')
+
+const app = express()
 
 /* Controllers */
 const genericController = require('./controllers/genericController')
+const authController = require('./controllers/authController')
 
-const app = express()
+/* Session */
+app.use(session({
+    name: 'sid',
+    secret: config.SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: config.SESS_HOUR,
+        sameSite: false,
+        secure: !config.isDev        
+        //httpOnly: false
+    }
+}))
 
 nunjucks.configure('views', {express: app})
 
@@ -23,8 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 /* Routes */
 app.use('/', genericController)
+app.use('/auth', authController)
 
 /* Starting server */
-app.listen(3000, () => {
-    console.log('O servidor inicializou na porta 3000');
-})
+app.listen(config.PORT, _ => console.log('O servidor inicializou na porta ' + config.PORT ))
