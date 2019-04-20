@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   {% include "site/includes/head.njk" %}
+</head>
+<body>
+
+   <div id="app-monada">
+      {% block content %}{% endblock %}
+   </div>
+
+    <!-- SCRIPTS -->
+    {% include "site/includes/scripts.njk" %}
+
+    <!-- JS -->
+    {% block js %}{% endblock %}
+</body>
+</html>

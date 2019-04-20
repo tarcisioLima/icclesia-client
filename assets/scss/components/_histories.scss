@@ -1,0 +1,113 @@
+.history-component{
+    background: $white;
+    padding: 15px 5px 15px 15px;
+    border-radius: 10px;
+    height: 300px;
+   
+    .friend-list{
+        overflow: auto;
+        height: 100%;
+     
+        @extend .default-scroll;
+
+        .user{
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+
+            &.active .img-box .counter{
+                display: block;
+            }
+
+            &:first-child{
+                padding-top: 15px;
+            }
+
+            &:hover{
+                .img-box{
+                    border: 1px solid $red;
+                }
+            }
+
+            .img-box{
+                position: relative;
+                display: inline-block;
+                margin-bottom: 0;
+                margin-right: 15px;
+                cursor: pointer;
+                border: 1px solid transparent;
+                border-radius: 50%;
+                transition: border 0.3s linear;
+
+                .counter{
+                    width: 20px;
+                    background: $red;
+                    color: $white;
+                    font-size: 9px;
+                    text-align: center;
+                    position: absolute;
+                    top: -8px;
+                    right: -5px;
+                    border-radius: 5px;
+                    display: none;
+                }
+
+                .wrap-image{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                }
+
+                .image{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .content{
+                flex-grow: 1;
+                cursor: pointer;
+
+                .user-name{
+                    margin-bottom: 0;
+                    font-weight: 600;
+                    font-size: 16px;
+                    width: 160px;
+                    white-space: nowrap;
+                    overflow: hidden !important;
+                    text-overflow: ellipsis;
+                }
+                
+                .informations{
+                    font-size: 12px;
+                    width: 160px;
+                    white-space: nowrap;
+                    overflow: hidden !important;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+    //Mobile 
+    @include media($sm, 'max'){
+        height: auto;
+        padding: 5px 5px 5px 5px;
+
+        .friend-list{
+            display: flex;
+            flex-flow: row nowrap;
+            overflow: initial;
+            overflow-x: auto;
+            padding: 15px 0;
+            .user{
+                margin-bottom: 0;
+                &:first-child {
+                    padding-top: 0;
+                }
+                .content{
+                    display: none;
+                }
+            }
+        }
+    }
+}

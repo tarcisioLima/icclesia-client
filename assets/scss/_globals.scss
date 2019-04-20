@@ -1,0 +1,49 @@
+.color-1 {
+    color: $color-1;
+}
+
+.default-scroll{
+    &::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+    }
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+    &::-webkit-scrollbar-thumb {
+        background: darken($gray, 7%); 
+        border-radius: 15px;
+    }    
+    &::-webkit-scrollbar-thumb:hover {
+        background: darken($gray, 12%); 
+    }
+}
+.reset-pdr{
+    padding-right: 0;
+}
+.reset-pdl{
+    padding-left: 0;
+}
+@include media($sm, 'max') {
+    .reset-pdr{
+        padding-right: 15px;
+    }
+    .reset-pdl{
+        padding-left: 15px;
+    }
+}
+.btn-default{
+    border-radius: 30px;
+    background: $color-1;
+    padding: 0.5rem 1rem;
+    color: $white!important;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    &:hover{
+        background: darken($color-1,10%);
+    }
+}

@@ -1,0 +1,31 @@
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,700');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons');
+
+/* Default Imports */
+@import 'colors';
+@import 'variables';
+@import 'overrides';
+@import 'keyframes';
+@import 'mixins';
+@import 'globals';
+
+
+/* Components */
+@import 'components/navbar';
+@import 'components/histories';
+@import 'components/publication';
+@import 'components/modal';
+
+/* Pages */
+@import 'pages/homepage';
+@import 'pages/feed';
+@import 'pages/profile';
+
+
+

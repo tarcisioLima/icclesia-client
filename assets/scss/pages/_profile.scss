@@ -1,0 +1,271 @@
+#profile-header{
+    background: url('../images/background-profile-example.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+    position: relative;
+    background-attachment: fixed;
+
+    .profile-image{
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        border: 5px solid $white;
+        overflow: hidden;
+        @include absolute-center(x);
+        bottom: -25px;
+
+        .user-img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    & + #profile-spec{
+        background: $white;
+        padding: 35px 0 0 0;
+
+        .username-box{
+            padding-bottom: 15px;
+            
+            .name, .tag{
+                font-family: $font-one;
+            }
+
+            .name{
+                font-size: 18px;
+                margin-bottom: 0;               
+            }
+
+            .tag{
+                display: block;
+                line-height: 14px;
+                font-size: 14px;
+            }
+        }
+
+        .spec-nav{
+            text-align: center;
+
+            .perfil-spec-list{
+                display: inline-flex;
+                flex-flow: row wrap;
+
+                li{
+                    position: relative;
+
+                    &:before{
+                        content: '';
+                        display: block;
+                        transition: all 0.3s ease-in-out;
+                        height: 3px;
+                        background: transparent;   
+                        bottom: 0;
+                        width: 0;
+                        @include absolute-center(x);
+                    }
+
+                    &.active, &:hover{                        
+                        &:before{
+                            width: 100%;   
+                            background: $color-1;        
+                        }
+                    }
+                    
+                    & > a {
+                        color: $color-1;
+                        display: block;
+                        padding-bottom: 8px;
+                        font-family: $font-two;
+
+                        .total{
+                            display: block;
+                            text-align: center;
+                            font-weight: 600;
+                            font-size: 18px;
+                        }
+                        .label{
+                            font-weight: 400;
+                            font-size: 13px;
+                            margin-bottom: 0;
+                        }
+                    }
+
+                    &:not(:last-child){
+                        margin-right: 12px;
+                    }
+                }
+            }
+        }
+
+        .quick-actions{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-bottom: 15px;
+
+            .item{
+
+                &:not(:last-child){
+                    margin-right: 12px;
+                }
+
+                &.btn-default {
+                    background: $white;
+                    color: $color-1!important;
+                    transition: all 0.3s linear;
+                    border: 2px solid $color-1;
+                    padding: 0.3rem 1rem;
+
+                    &:hover, .active{
+                        background: $color-1;
+                        color: $white!important;
+                    }
+                }
+
+                .material-icons{
+                    color: $color-1;
+                    font-size: 28px;
+
+                    &:hover{
+                        color: darken($color-1, 10%);
+                    }
+                }
+            }
+        }
+        
+        //mobile
+        @include media($sm, 'max'){
+            .username-box{
+                text-align: center;
+            }
+
+            .spec-nav{
+                .perfil-spec-list{
+                    width: 100%;
+                    justify-content: center;
+                }
+            }
+
+            .quick-actions{
+                justify-content: center;
+                padding-top: 15px;
+            }
+        }
+    }
+}
+
+.publications-wrapper{
+    .action-menu{
+        padding: 15px 15px 5px;
+        border-bottom: 2px solid #e7ecf0;
+        .list{
+            display: flex;
+            li{
+                &:not(:last-child){
+                    margin-right: 15px;
+                }
+                a{
+                    display: inline-flex;
+                    align-items: center;
+                    color: $color-1;
+                    transition: 0.3s;
+                    font-family: $font-three;
+                    &:hover{
+                        color: darken($color-1, 20%);
+                    }
+                    .material-icons{
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.side{    
+    &__quotation{
+        @include fontset(center, $font-three, 16px, 400, initial, $black);
+        margin-bottom: 15px;
+        
+    }
+    &__desc{
+        margin-bottom: 15px;
+        text-align: center;
+
+        .icon{
+            background-repeat: no-repeat;
+            display: inline-block;
+          
+            &.wing-heart{
+                background-image: url('../images/icons/wing-heart.png');
+                width: 67px;
+                height: 33px;
+            }
+            &.church{
+                background-image: url('../images/icons/church.png');
+                width: 48px;
+                height: 46px;
+            }
+        }
+        .name{
+            @include fontset(center, $font-two, 16px, 400, initial, $color-1);
+            &:hover{
+                color: darken($color-1, 10%);
+            }
+        }
+    }
+    &__socials{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .icon {
+            height: 22px;
+            width: 22px;
+            s
+            a {               
+                display: inline-block;
+                background: url('../images/icons/socials.png');
+                background-repeat: no-repeat;
+                transition: all 0.2s ease-in-out;
+            }
+            &.site a{
+                background-position: -3px -5px; 
+                width: 22px;
+                height: 22px;
+            }
+            &.gab a{
+                background-position: -52px -5px; 
+                width: 22px;
+                height: 22px;
+            }
+            &.youtube a{
+                background-position: -100px -5px; 
+                width: 22px;
+                height: 22px;
+            }
+            &.facebook a{
+                background-position: -148px -5px; 
+                width: 22px;
+                height: 22px;
+            }
+            &.instagram a{
+                background-position: -197px -5px; 
+                width: 22px;
+                height: 22px;
+            }
+            &.twitter a{
+                background-position: -245px -5px; 
+                width: 22px;
+                height: 22px;
+            }
+            &:hover{
+                a{                    
+                    background-position-y: -42px;
+                }
+            }
+        }
+    }
+}
