@@ -1,17 +1,24 @@
 const express = require('express')
 const router  = express.Router()
 const rp      = require('request-promise-native')
-const config  = require('../config')
+const options = require('./helpers/request')
 
 router.post('/login', (req, res) => {
-    rp.post(config.API_URL + 'auth/login', req.body)    
-    .then((body) => {
-        console.log('deu bom')
-        res.send(data); 
+    
+    console.log(options.getOptions(req, 'POST'))
+    rp(options.getOptions(req, 'POST')).then((body) => {      
+        if(body.sucess){
+            res.send(body);
+        }else{
+            res.status(401);
+            res.send(body);
+        }        
+        
     }).catch((err) => {
-        console.log('deu ruim')
-        res.send(err); 
-    })
+        res.status(500);
+        res.send(err)
+    });
+    
 })
 
 router.post('/logout', (req, res) => {

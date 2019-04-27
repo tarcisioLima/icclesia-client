@@ -20,8 +20,8 @@ app.use(session({
     cookie: {
         maxAge: config.SESS_HOUR,
         sameSite: false,
-        secure: !config.isDev        
-        //httpOnly: false
+        secure: !config.isDev,      
+        httpOnly: true
     }
 }))
 
