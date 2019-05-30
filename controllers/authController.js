@@ -4,25 +4,21 @@ const rp      = require('request-promise-native')
 const options = require('./helpers/request')
 
 router.post('/login', (req, res) => {
-    
-    console.log(options.getOptions(req, 'POST'))
-    rp(options.getOptions(req, 'POST')).then((body) => {      
-        if(body.sucess){
-            res.send(body);
-        }else{
-            res.status(401);
-            res.send(body);
+    rp(options.getOptions(req, 'POST')).then((body) => {
+        if(body.msg === "Logado") {
+            console.log('deu bom: ', body)
+            res.status(200).redirect('/');
+        }else {
+            console.log('deu ruim: ', body)
+            res.status(200).redirect('/')
+            //res.send(body)
         }        
-        
     }).catch((err) => {
-        res.status(500);
-        res.send(err)
-    });
-    
-})
-
-router.post('/logout', (req, res) => {
-    //res.render('site/index'); 
+        console.log('deu ruim: ', err)
+        res.status(400).redirect('/')
+        //res.status(500)
+        //res.send(err)
+    });    
 })
 
 router.post('/register', (req, res) => {   

@@ -3,6 +3,9 @@
 const SESS_HOUR = 1000 * 60 * 60 * process.env.SESS_LIFETIME || 2
 const SECRET = process.env.SECRET || 'AveMaria'
 
+const DBCONNECTION = 'mongodb://localhost:27017'
+const DBNAME = 'IcclesiaDB'
+
 let PORT, API_URL, ISDEV
 
 if((process.env.ENV).toUpperCase() == 'DEVELOPMENT'){
@@ -18,6 +21,6 @@ if((process.env.ENV).toUpperCase() == 'DEVELOPMENT'){
     throw new Error('Atributo ENV em .env incorreto ou não encontrado.')
 }
 
-const config = { SESS_HOUR, PORT, SECRET, API_URL, ISDEV }
+const config = { SESS_HOUR, PORT, SECRET, API_URL, ISDEV, DBCONNECTION, DBNAME }
 
 module.exports = config;
