@@ -6,19 +6,18 @@ const options = require('./helpers/request')
 router.post('/login', (req, res) => {
     rp(options.getOptions(req, 'POST')).then((body) => {
         if(body.msg === "Logado") {
-            console.log('deu bom: ', body)
-            res.status(200).redirect('/');
+            req.session.user = body
+            req.session.save()
+            res.redirect('/feed')
         }else {
             console.log('deu ruim: ', body)
-            res.status(200).redirect('/')
-            //res.send(body)
+            req.flash('msgs', [body.msg])
+            res.redirect('/')            
         }        
-    }).catch((err) => {
-        console.log('deu ruim: ', err)
-        res.status(400).redirect('/')
-        //res.status(500)
-        //res.send(err)
-    });    
+    }).catch((err) => {      
+        req.flash('msgs', [err])
+        res.redirect('/')     
+    });
 })
 
 router.post('/register', (req, res) => {   

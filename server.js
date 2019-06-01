@@ -3,7 +3,8 @@ const path       = require('path')
 const nunjucks   = require('nunjucks')
 const bodyparser = require('body-parser')
 const session    = require('express-session')
-const mongodb     = require('mongodb')
+const mongodb    = require('mongodb')
+const flash      = require('connect-flash')
 var MongoDBStore = require('connect-mongodb-session')(session);
 const config     = require('./config')
 const app = express()
@@ -29,6 +30,8 @@ app.use(session({
         maxAge: config.SESS_HOUR       
     }
 }))
+
+app.use(flash())
 
 // Catch some errors
 store.on('error', function(error) {
@@ -58,16 +61,6 @@ const isLogged = function(req, res, next) {
     }
 }
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-	try{
-		next(createError(404))
-	} catch(err) {
-		console.log('Exception 404')
-		next()
-	}
-});
-
 app.use('/logout', (req, res) => {
 	req.session.destroy()
 	res.redirect('/')
@@ -76,6 +69,12 @@ app.use('/logout', (req, res) => {
 /* Routes */
 app.use('/', genericController)
 app.use('/auth', authController)
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    console.log('404 - notfound.')    
+    return res.status(404).render('errors/404'); 
+});
 
 /* Starting server */
 app.listen(config.PORT, _ => console.log('O servidor inicializou na porta ' + config.PORT ))

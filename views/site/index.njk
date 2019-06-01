@@ -10,9 +10,11 @@
 <div class="container mt-5">
     <h1>Login Teste</h1>
 
-    <div class="alert alert-warning">
-        {{ response }}
-    </div>
+    {% if(msgs.length) %}
+        <div class="alert alert-warning">
+            {{ msgs[0] }}
+        </div>
+     {% endif %}
     
     <form action="/auth/login" method="post">
         <div class="form-group">
