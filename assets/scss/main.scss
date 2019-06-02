@@ -21,15 +21,15 @@
 @import 'elements/_form';
 
 /* Components */
-@import 'components/navbar';
-@import 'components/histories';
-@import 'components/publication';
-@import 'components/modal';
+@import 'components/_navbar';
+@import 'components/_histories';
+@import 'components/_publication';
+@import 'components/_modal';
 
 /* Pages */
-@import 'pages/homepage';
-@import 'pages/feed';
-@import 'pages/profile';
+@import 'pages/_homepage';
+@import 'pages/_feed';
+@import 'pages/_profile';
 
 
 

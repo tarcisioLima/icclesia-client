@@ -19,21 +19,25 @@
         height: calc(100% - 76px);
 
         .title{
-            color: $white;
+            color: #FDFDFD;
             display: inline-block;
             font-weight: 700;          
             z-index: 3;
             font-size: 5em;
-            text-shadow: 1px 1px 6px #222;
-            font-family: $font-three;
+            text-shadow: 1px 1px 30px #FFF;
+            font-family: $font-four;
+            opacity: 0.95;
             text-transform: uppercase;
         }
 
         .description{
-            font-family: $font-three;
+            font-family: $font-four;
             color: $white;
             font-style: italic;
-            font-size: 1.3em;
+            font-size: 1.0em;
+            &:first-letter{
+                font-size: 30px;
+            }
         }
     }
 
@@ -84,7 +88,7 @@
 }
 
 #home-menu{      
-    background: rgba(255,255,255, 0.1);
+    //background: rgba(255,255,255, 0.1);
 
     .navbar{
         &-brand img{
@@ -127,7 +131,7 @@
         }        
     }
 
-    @include media($sm, 'max'){
+    @include media($xs, 'max'){
         .navbar-collapse{
             position: absolute;
             top: 100%;
