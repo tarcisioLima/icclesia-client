@@ -10,7 +10,7 @@
                     <div dismissible type="error">
                         {{ alertmsg }}
                     </div> 
-                    <form action="">
+                    <form class="default" @submit.prevent="login">
                         <div class="form-group">
                             <label for="email-login">E-mail</label>
                             <input type="email" class="form-control" id="email-login" v-model="email" data-vv-name="email" v-validate="'required|email'" :error-messages="errors.collect('email')" required>
@@ -22,8 +22,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Login</button>
-                    <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="login">Entrar</button>                   
                 </div>
             </div>
         </div>

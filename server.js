@@ -51,16 +51,6 @@ app.use(bodyparser.urlencoded({
 /* public path */
 app.use(express.static(path.join(__dirname, 'public')));
 
-/* Middleware to ever verify if session exists */
-const isLogged = function(req, res, next) {
-	if(req.session && req.session.user) {
-        next()
-    }else{
-        req.session.destroy()
-		return res.redirect('/')
-    }
-}
-
 app.use('/logout', (req, res) => {
 	req.session.destroy()
 	res.redirect('/')

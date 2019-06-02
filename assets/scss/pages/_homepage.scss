@@ -128,7 +128,6 @@
     }
 
     @include media($sm, 'max'){
-
         .navbar-collapse{
             position: absolute;
             top: 100%;

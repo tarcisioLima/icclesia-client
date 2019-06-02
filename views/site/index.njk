@@ -10,7 +10,8 @@
 <div class="home-wrapper">   
 
     <main class="content">       
-        <homepage-navigation></homepage-navigation>
+        <homepage-navigation logo="/images/logo-maria-prod-white.png"></homepage-navigation>
+
         <div class="box-content">
             <div class="text text-center">
                 <h1 class="title">Icclesia</h1>
@@ -18,50 +19,28 @@
             </div>
         </div>
     </main>
+
     <div id="home-slider" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="img" src="/images/home/virgem-maria-1.jpg" alt="Virgem Maria">
+                <img class="img" src="/images/home/virgem-maria-1.jpg" alt="Virgem Maria 1">
             </div>
             <div class="carousel-item">
-                <img class="img" src="/images/home/virgem-maria-2.jpg" alt="Virgem Maria">
+                <img class="img" src="/images/home/virgem-maria-2.jpg" alt="Virgem Maria 2">
             </div>
             <div class="carousel-item">
-                <img class="img" src="/images/home/virgem-maria-3.jpg" alt="Virgem Maria">
+                <img class="img" src="/images/home/virgem-maria-3.jpg" alt="Virgem Maria 3">
             </div>
             <div class="carousel-item">
-                <img class="img" src="/images/home/virgem-maria-4.jpg" alt="Virgem Maria">
+                <img class="img" src="/images/home/virgem-maria-4.jpg" alt="Virgem Maria 4">
             </div>
             <div class="carousel-item">
-                <img class="img" src="/images/home/virgem-maria-5.jpg" alt="Virgem Maria">
+                <img class="img" src="/images/home/virgem-maria-5.jpg" alt="Virgem Maria 5">
             </div>
         </div>
     </div>
 
-
+     <!-- MODAIS -->
+    <home-login-modal></home-login-modal>    
 </div>
-
-
-{# <div class="container mt-5">
-    <h1>Login Teste</h1>
-
-    {% if(msgs.length) %}
-        <div class="alert alert-warning">
-            {{ msgs[0] }}
-        </div>
-     {% endif %}
-    
-    <form action="/auth/login" method="post">
-        <div class="form-group">
-            <label>E-mail</label>
-            <input type="text" class="form-control" name="email" required>
-        </div>
-        <div class="form-group">
-            <label>Senha</label>
-            <input type="password" class="form-control" name="password" required>
-        </div>
-        <button type="submit" class="btn-default b-none">Entrar</button>
-    </form>
-</div> #}
-
 {% endblock %}
