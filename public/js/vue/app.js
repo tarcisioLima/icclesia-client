@@ -11746,6 +11746,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -60056,7 +60059,7 @@ var staticRenderFns = [
     return _c(
       "nav",
       {
-        staticClass: "navbar navbar-light navbar-expand-lg",
+        staticClass: "navbar navbar-light navbar-expand-md",
         attrs: { id: "home-menu" }
       },
       [
@@ -60065,6 +60068,20 @@ var staticRenderFns = [
             attrs: { src: "/images/logo-maria-prod-white.png", alt: "Icclesia" }
           })
         ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "navbar-toggler",
+            attrs: {
+              type: "button",
+              "data-toggle": "collapse",
+              "data-target": "#navbarNav",
+              "aria-expanded": "false"
+            }
+          },
+          [_c("i", { staticClass: "material-icons" }, [_vm._v("menu")])]
+        ),
         _vm._v(" "),
         _c(
           "div",

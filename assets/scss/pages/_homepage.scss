@@ -1,21 +1,56 @@
 .home-wrapper{
-    display: flex;
-    flex-wrap: wrap;
-    background: $white;
     position: relative;
 
     & > .content{
         flex-grow: 1;
-
         z-index: 100;
         position: absolute;
         left: 0;
         right: 0;
-        //background: $white;
+        height: 100%;      
     }
 
     .box-content{
         padding: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;        
+        height: calc(100% - 76px);
+
+        .title{
+            color: $white;
+            display: inline-block;
+            font-weight: 700;          
+            z-index: 3;
+            font-size: 5em;
+            text-shadow: 1px 1px 6px #222;
+            font-family: $font-three;
+            text-transform: uppercase;
+        }
+
+        .description{
+            font-family: $font-three;
+            color: $white;
+            font-style: italic;
+            font-size: 1.3em;
+        }
+    }
+
+    .navbar-toggler{
+        background: $white;
+    }
+
+    @include media($sm, 'max'){
+        .box-content{
+            .title{
+                font-size: 4em;
+            }
+
+            .description{
+                font-size: 0.8em;
+            }
+        }
     }
     
 }
@@ -45,24 +80,12 @@
         bottom: 0;
         z-index: 2;
         left: 0;   
-    }
-    &:after{
-        content: 'ICCLESIA';
-        color: $white;
-        display: inline-block;
-        font-weight: 700;
-        @include absolute-center();
-        z-index: 3;
-        font-size: 4em;
-        text-shadow: 1px 1px 6px #222;
-        font-family: $font-three;
-    }
+    }   
 }
 
-#home-menu{   
-   // box-shadow: 0 5px 30px 8px rgba(0, 0, 0, 0.1);
-    //border-bottom: 1px solid #cac5c5;
+#home-menu{      
     background: rgba(255,255,255, 0.2);
+
     .navbar{
         &-brand img{
             width: 50px;            
@@ -100,9 +123,36 @@
                 }
                 &:hover{
                     color: $white;
-                    background: darken($color-1, 0%);        
+                    background: lighten($color-1, 10%);        
                 }
             }
         }        
+    }
+
+    @include media($sm, 'max'){
+
+        .navbar-collapse{
+            position: absolute;
+            top: 100%;
+            left: 0px;
+            right: 0px;
+            padding: 0 15px;
+            background: rgba($white, 0.2);
+        }
+
+        .navbar-nav{
+            .nav-link{
+                width: 100%;
+                justify-content: center;
+            }           
+
+            .nav-item{
+                margin-bottom: 5px;
+                
+                &:not(:last-child){
+                    margin-right: 0;
+                }
+            }              
+        }
     }
 }

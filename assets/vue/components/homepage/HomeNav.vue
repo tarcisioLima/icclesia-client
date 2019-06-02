@@ -1,8 +1,11 @@
 <template>
-    <nav id="home-menu" class="navbar navbar-light navbar-expand-lg">
+    <nav id="home-menu" class="navbar navbar-light navbar-expand-md">
         <a class="navbar-brand" href="#">                
             <img src="/images/logo-maria-prod-white.png" alt="Icclesia">
         </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false">
+            <i class="material-icons">menu</i>
+        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">

@@ -10689,9 +10689,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Pages */
 .home-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  background: #ffffff;
   position: relative;
 }
 .home-wrapper > .content {
@@ -10700,9 +10697,42 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   left: 0;
   right: 0;
+  height: 100%;
 }
 .home-wrapper .box-content {
   padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: calc(100% - 76px);
+}
+.home-wrapper .box-content .title {
+  color: #ffffff;
+  display: inline-block;
+  font-weight: 700;
+  z-index: 3;
+  font-size: 5em;
+  text-shadow: 1px 1px 6px #222;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+}
+.home-wrapper .box-content .description {
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  font-style: italic;
+  font-size: 1.3em;
+}
+.home-wrapper .navbar-toggler {
+  background: #ffffff;
+}
+@media (max-width: 768px) {
+  .home-wrapper .box-content .title {
+    font-size: 4em;
+  }
+  .home-wrapper .box-content .description {
+    font-size: 0.8em;
+  }
 }
 
 #home-slider {
@@ -10727,21 +10757,6 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 0;
   z-index: 2;
   left: 0;
-}
-#home-slider:after {
-  content: "ICCLESIA";
-  color: #ffffff;
-  display: inline-block;
-  font-weight: 700;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  z-index: 3;
-  font-size: 4em;
-  text-shadow: 1px 1px 6px #222;
-  font-family: "Poppins", sans-serif;
 }
 
 #home-menu {
@@ -10779,7 +10794,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 #home-menu .navbar-nav .nav-link:hover {
   color: #ffffff;
-  background: #867444;
+  background: #a89155;
+}
+@media (max-width: 768px) {
+  #home-menu .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    right: 0px;
+    padding: 0 15px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  #home-menu .navbar-nav .nav-link {
+    width: 100%;
+    justify-content: center;
+  }
+  #home-menu .navbar-nav .nav-item {
+    margin-bottom: 5px;
+  }
+  #home-menu .navbar-nav .nav-item:not(:last-child) {
+    margin-right: 0;
+  }
 }
 
 #content-wrapper {
