@@ -33,6 +33,7 @@
     "nunjucks": "^3.2.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
+    "vee-validate": "^2.2.9",
     "vue": "^2.6.10"
   },
   "devDependencies": {

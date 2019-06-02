@@ -2,9 +2,16 @@
     display: flex;
     flex-wrap: wrap;
     background: $white;
+    position: relative;
 
     & > .content{
         flex-grow: 1;
+
+        z-index: 100;
+        position: absolute;
+        left: 0;
+        right: 0;
+        //background: $white;
     }
 
     .box-content{
@@ -14,7 +21,7 @@
 }
 
 #home-slider{
-    width: 40%;
+    width: 100%;
     position: relative;    
 
     .carousel{
@@ -53,8 +60,9 @@
 }
 
 #home-menu{   
-    box-shadow: 0 5px 30px 8px rgba(0, 0, 0, 0.1);
-
+   // box-shadow: 0 5px 30px 8px rgba(0, 0, 0, 0.1);
+    //border-bottom: 1px solid #cac5c5;
+    background: rgba(255,255,255, 0.2);
     .navbar{
         &-brand img{
             width: 50px;            
@@ -71,19 +79,28 @@
             }
             .nav-link{
                 text-transform: uppercase;
-                color: $white;
+                //color: $white;
+                display: inline-flex;
+                align-items: center;
+                color: $color-1;
                 font-family: $font-three;
                 font-weight: 300;
                 border-radius: 5px;
-                background: lighten($color-1, 10%);
-                border-bottom: 4px solid $color-1;
-                border-right: 4px solid $color-1;
+                //background: lighten($color-1, 10%);
+                background: $white;
+                border-bottom: 4px solid darken($white, 10%);
+                border-right: 4px solid darken($white, 10%);
                 padding: 0.5rem 1rem 0.4rem 1rem;
                 font-size: 14px;
                 transition: 0.3s;
 
+                i{
+                    font-size: 16px;
+                    transform: translateY(-1px);                    
+                }
                 &:hover{
-                    background: $color-1;           
+                    color: $white;
+                    background: darken($color-1, 0%);        
                 }
             }
         }        
