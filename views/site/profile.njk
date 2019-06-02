@@ -11,7 +11,7 @@
 
 <header id="profile-header">
     <div class="profile-image">
-        <img src="/images/me.jpg" class="user-img" alt="gabriel">
+        <img src="{{ userdata.user.image }}" class="user-img" alt="gabriel">
     </div>
 </header>
 <div id="profile-spec">
@@ -19,8 +19,8 @@
         <div class="row">
             <div class="col-lg-4 col-md-3">
                 <div class="username-box">
-                    <h4 class="name">Gabriel Morais Silva</h4>
-                    <span class="tag">@gmoraiz</span>
+                    <h4 class="name">{{ userdata.user.name }}</h4>
+                    <span class="tag">@{{ userdata.user.username }}</span>
                 </div>
             </div>
             <nav class="col-lg-4 col-md-6 spec-nav">

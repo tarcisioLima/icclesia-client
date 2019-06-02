@@ -51,9 +51,9 @@
                     </a>
                 </li>
                 <li class="item">
-                    <a href="#" title="Perfil">
+                    <a href="/perfil" :title="all.user.username">
                     <figure class="wrap-image">
-                        <img src="/images/me.jpg" alt="logo">
+                        <img :src="all.user.image" alt="logo">
                     </figure>
                     </a>
                 </li>
@@ -69,7 +69,7 @@
 
 
 export default {
-
+    props: ['all']
 }
 </script>
 

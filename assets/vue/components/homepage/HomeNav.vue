@@ -20,8 +20,7 @@
                     </li>      
                 </ul>   
             </div>  
-        </nav>      
-
+        </nav>    
     </div>
 </template>
 
@@ -30,11 +29,11 @@
 
 export default {
     props: ['logo'],
+
     methods: {
         openModal(id){
             $(id).modal()
         },       
-    },
-    
+    }    
 }
 </script>

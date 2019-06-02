@@ -7,22 +7,24 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    <div dismissible type="error">
-                        {{ alertmsg }}
-                    </div> 
+                    <div class="alert alert-warning" role="alert" v-if="alert">{{ alertmsg }}</div>
+                   
                     <form class="default" @submit.prevent="login">
                         <div class="form-group">
                             <label for="email-login">E-mail</label>
-                            <input type="email" class="form-control" id="email-login" v-model="email" data-vv-name="email" v-validate="'required|email'" :error-messages="errors.collect('email')" required>
+                            <input type="email" :class="{'form-control': true, 'is-invalid': errors.first('email') != undefined ? true : false }" id="email-login" v-model="email" data-vv-name="email" v-validate="'required|email'" @keyup.enter="login">
+                            <div class="invalid-feedback">{{ errors.first('email') }}</div>
                         </div>
                         <div class="form-group">
                             <label for="senha-login">Senha</label>
-                            <input type="password" class="form-control" id="senha-login" v-model="password" data-vv-name="password" v-validate="'required|min:6'" :error-messages="errors.collect('password')" required>
+                            <input type="password" :class="{'form-control': true, 'is-invalid': errors.first('password') != undefined ? true : false }" id="senha-login" v-model="password" data-vv-name="password" v-validate="'required|min:6'" @keyup.enter="login">
+                            <div class="invalid-feedback">{{ errors.first('password') }}</div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="login">Entrar</button>                   
+                    <button type="button" :disabled="loader" class="btn btn-secondary" @click="login">Entrar 
+                        <span v-if="loader" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>                   
                 </div>
             </div>
         </div>
@@ -30,16 +32,19 @@
 </template>
 
 <script>
+import mixin from '@/mixins.js'
 
 export default {   
+    mixins: [mixin],
+
     mounted() {      
-      this.$validator.localize('pt-br', this.dictionary)   
+      this.$validator.localize('pt-br', this.dictionary)  
     },
     data() {
         return {
             alert: false,
             alertmsg: '',
-            dialog: false,
+            loader: false,
             email: '',
             password: '',
             dictionary: {                
@@ -57,32 +62,34 @@ export default {
         }
     },  
     methods: {
-        login() {    
-            this.$validator.validateAll().then((v) => {                
+        login() {
+            this.$validator.validateAll().then((v) => {
                 if(v) {
-                    this.$store.dispatch("login", {
+                    this.loader = true; 
+                    axios.post(this.basepath + 'auth/login', {
                         email: this.email,
                         password: this.password
-                    }).then((res) => {               
-                        console.log('logou com efeito: ', res)
-                        this.dialog = false;
-                    }).catch((e) => {
-                        this.alertmsg = e;
-                        this.alert = true;
-                        //console.log(e)
                     })
+                    .then((response) =>{
+                        //console.log(response);
+                        if(!response.data.status){
+                            this.alertmsg = response.data.msg
+                            this.alert = true
+                        }else{
+                            this.alert = false
+                            window.location.href="/feed"
+                        }
+                        this.loader = false;
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                        this.alertmsg = error.data
+                        this.alert = true
+                        this.loader = false
+                    });
                 }
             })
-        },
-        
-    },
-    watch: {    
-    }
+        },        
+    }    
 }
 </script>
-
-<style scoped>
-    .v-progress-linear {
-        margin: 0 0 1rem;
-    }
-</style>
