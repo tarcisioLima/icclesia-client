@@ -10778,6 +10778,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #home-menu .navbar-nav .nav-link {
   text-transform: uppercase;
+  color: #ffffff;
   display: inline-flex;
   align-items: center;
   color: #FFF;
@@ -10797,8 +10798,8 @@ h1, h2, h3, h4, h5, h6 {
           transform: translateY(-1px);
 }
 #home-menu .navbar-nav .nav-link:hover {
-  color: #ffffff;
-  background: #a89155;
+  color: #867444;
+  background: #ffffff;
 }
 @media (max-width: 768px) {
   #home-menu .navbar-collapse {
@@ -10812,6 +10813,9 @@ h1, h2, h3, h4, h5, h6 {
   #home-menu .navbar-nav .nav-link {
     width: 100%;
     justify-content: center;
+    background: #ffffff;
+    color: #867444;
+    border-radius: 5px;
   }
   #home-menu .navbar-nav .nav-item {
     margin-bottom: 5px;
@@ -11314,5 +11318,3 @@ h1, h2, h3, h4, h5, h6 {
 .side__socials .icon:hover a {
   background-position-y: -42px;
 }
-
-text text-center
