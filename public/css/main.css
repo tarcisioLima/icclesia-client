@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,700);@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,700);@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700);@import url(https://fonts.googleapis.com/css?family=Cinzel);@import url(https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,700);@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,700);@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons);@charset "UTF-8";
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -10708,20 +10708,23 @@ h1, h2, h3, h4, h5, h6 {
   height: calc(100% - 76px);
 }
 .home-wrapper .box-content .title {
-  color: #ffffff;
+  color: #FDFDFD;
   display: inline-block;
   font-weight: 700;
   z-index: 3;
   font-size: 5em;
-  text-shadow: 1px 1px 6px #222;
-  font-family: "Poppins", sans-serif;
+  text-shadow: 1px 1px 30px #FFF;
   text-transform: uppercase;
+  font-family: 'Cinzel', serif;
+  opacity: 0.95;
 }
 .home-wrapper .box-content .description {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Cinzel', serif;
   color: #ffffff;
-  font-style: italic;
-  font-size: 1.3em;
+  font-size: 1.0em;
+}
+.home-wrapper .box-content .description:first-letter{
+  font-size: 30px;
 }
 .home-wrapper .navbar-toggler {
   background: #ffffff;
@@ -10760,7 +10763,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #home-menu {
-  background: rgba(255, 255, 255, 0.2);
+  /* background: rgba(255, 255, 255, 0.2); */
 }
 #home-menu .navbar-brand img {
   width: 50px;
@@ -10770,23 +10773,24 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 #home-menu .navbar-nav .nav-item:not(:last-child) {
-  margin-right: 5px;
+  margin-right: 10px;
 }
+
 #home-menu .navbar-nav .nav-link {
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
-  color: #867444;
+  color: #FFF;
   font-family: "Poppins", sans-serif;
   font-weight: 300;
-  border-radius: 5px;
-  background: #ffffff;
-  border-bottom: 4px solid #e6e6e6;
-  border-right: 4px solid #e6e6e6;
+  border-radius: 50px;
+  background: transparent;
   padding: 0.5rem 1rem 0.4rem 1rem;
   font-size: 14px;
   transition: 0.3s;
+  border: white 1px solid;
 }
+
 #home-menu .navbar-nav .nav-link i {
   font-size: 16px;
   -webkit-transform: translateY(-1px);
@@ -11310,3 +11314,5 @@ h1, h2, h3, h4, h5, h6 {
 .side__socials .icon:hover a {
   background-position-y: -42px;
 }
+
+text text-center
