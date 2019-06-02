@@ -71,8 +71,7 @@ app.use('/', genericController)
 app.use('/auth', authController)
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    console.log('404 - notfound.')    
+app.use(function(req, res, next) {   
     return res.status(404).render('errors/404'); 
 });
 
