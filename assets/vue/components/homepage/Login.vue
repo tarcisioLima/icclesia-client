@@ -1,57 +1,33 @@
 <template>
-  <v-layout row justify-center>
-    <v-dialog v-model="dialog" persistent max-width="600px">     
-      <v-card>
-        <!-- Loader --> 
-        <v-progress-linear :indeterminate="this.$store.getters.loader"  v-if="this.$store.getters.loader"></v-progress-linear>
-        <v-card-title>
-          <span class="display-1 font-weight-medium">Login</span>
-        </v-card-title>
-        <v-card-text>
-        <!-- Alert -->
-        <v-alert v-model="alert" dismissible type="error">
-            {{ alertmsg }}
-        </v-alert>        
-
-          <v-container grid-list-md>
-            <v-layout wrap>
-                <v-flex xs12>
-                    <v-text-field 
-                        label="E-mail" 
-                        type="email" 
-                        v-model="email"
-                        data-vv-name="email"
-                        v-validate="'required|email'"
-                        :error-messages="errors.collect('email')"
-                        required>
-                    </v-text-field>
-                </v-flex>
-
-                <v-flex xs12>
-                  <v-text-field 
-                        label="Senha" 
-                        type="password" 
-                        v-model="password"
-                        data-vv-name="password"
-                        v-validate="'required|min:6'"
-                        :error-messages="errors.collect('password')"
-                        required>
-                  </v-text-field>
-                </v-flex>
-
-            </v-layout>
-          </v-container> 
-        </v-card-text>
-
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" dark flat @click="closeModal">Fechar</v-btn>
-          <v-btn color="primary" dark @click="login">Entrar</v-btn>
-        </v-card-actions>
-
-      </v-card>
-    </v-dialog>
-  </v-layout>
+    <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div dismissible type="error">
+                        {{ alertmsg }}
+                    </div> 
+                    <form action="">
+                        <div class="form-group">
+                            <label for="email-login">E-mail</label>
+                            <input type="email" class="form-control" id="email-login" v-model="email" data-vv-name="email" v-validate="'required|email'" :error-messages="errors.collect('email')" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="senha-login">Senha</label>
+                            <input type="password" class="form-control" id="senha-login" v-model="password" data-vv-name="password" v-validate="'required|min:6'" :error-messages="errors.collect('password')" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Login</button>
+                    <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -99,15 +75,9 @@ export default {
                 }
             })
         },
-        closeModal() {
-            this.dialog = false;
-            this.$emit('closeModal');
-        }
+        
     },
-    watch: {
-        dlog(nval, oval) {           
-            this.dialog = nval;
-        }
+    watch: {    
     }
 }
 </script>

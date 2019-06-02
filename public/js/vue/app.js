@@ -11749,9 +11749,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    loginModal: function loginModal() {
+      $('#modalLogin').modal();
+    },
+    registerModal: function registerModal() {}
+  },
   components: {
     'register-modal': _components_homepage_Register__WEBPACK_IMPORTED_MODULE_0__["default"],
     'login-modal': _components_homepage_Login__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -11769,30 +11781,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -11872,17 +11860,9 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       });
-    },
-    closeModal: function closeModal() {
-      this.dialog = false;
-      this.$emit('closeModal');
     }
   },
-  watch: {
-    dlog: function dlog(nval, oval) {
-      this.dialog = nval;
-    }
-  }
+  watch: {}
 });
 
 /***/ }),
@@ -60049,73 +60029,103 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    [
+      _c(
+        "nav",
+        {
+          staticClass: "navbar navbar-light navbar-expand-md",
+          attrs: { id: "home-menu" }
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse navbar-collapse",
+              attrs: { id: "navbarNav" }
+            },
+            [
+              _c("ul", { staticClass: "navbar-nav" }, [
+                _c("li", { staticClass: "nav-item active" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link",
+                      attrs: { href: "#" },
+                      on: { click: _vm.loginModal }
+                    },
+                    [_vm._v("Entrar")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "nav-item" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link",
+                      attrs: { href: "#" },
+                      on: { click: _vm.registerModal }
+                    },
+                    [_vm._v("Registrar-se")]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("login-modal")
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
+      _c("img", {
+        attrs: { src: "/images/logo-maria-prod-white.png", alt: "Icclesia" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
-      "nav",
+      "button",
       {
-        staticClass: "navbar navbar-light navbar-expand-md",
-        attrs: { id: "home-menu" }
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarNav",
+          "aria-expanded": "false"
+        }
       },
-      [
-        _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-          _c("img", {
-            attrs: { src: "/images/logo-maria-prod-white.png", alt: "Icclesia" }
-          })
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "navbar-toggler",
-            attrs: {
-              type: "button",
-              "data-toggle": "collapse",
-              "data-target": "#navbarNav",
-              "aria-expanded": "false"
-            }
-          },
-          [_c("i", { staticClass: "material-icons" }, [_vm._v("menu")])]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "collapse navbar-collapse",
-            attrs: { id: "navbarNav" }
-          },
-          [
-            _c("ul", { staticClass: "navbar-nav" }, [
-              _c("li", { staticClass: "nav-item active" }, [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _vm._v("Entrar")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "nav-item" }, [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _vm._v("Registrar-se")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "nav-item" }, [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _vm._v("Igrejas próximas "),
-                  _c("i", { staticClass: "material-icons ml-1" }, [
-                    _vm._v("search")
-                  ])
-                ])
-              ])
-            ])
-          ]
-        )
-      ]
+      [_c("i", { staticClass: "material-icons" }, [_vm._v("menu")])]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "nav-item" }, [
+      _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+        _vm._v("Igrejas próximas "),
+        _c("i", { staticClass: "material-icons ml-1" }, [_vm._v("search")])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -60140,174 +60150,163 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-layout",
-    { attrs: { row: "", "justify-center": "" } },
+    "div",
+    {
+      staticClass: "modal fade",
+      attrs: {
+        id: "modalLogin",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-hidden": "true"
+      }
+    },
     [
-      _c(
-        "v-dialog",
-        {
-          attrs: { persistent: "", "max-width": "600px" },
-          model: {
-            value: _vm.dialog,
-            callback: function($$v) {
-              _vm.dialog = $$v
-            },
-            expression: "dialog"
-          }
-        },
-        [
-          _c(
-            "v-card",
-            [
-              this.$store.getters.loader
-                ? _c("v-progress-linear", {
-                    attrs: { indeterminate: this.$store.getters.loader }
-                  })
-                : _vm._e(),
-              _vm._v(" "),
-              _c("v-card-title", [
-                _c("span", { staticClass: "display-1 font-weight-medium" }, [
-                  _vm._v("Login")
-                ])
+      _c("div", { staticClass: "modal-dialog", attrs: { role: "document" } }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-body" }, [
+            _c("div", { attrs: { dismissible: "", type: "error" } }, [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.alertmsg) +
+                  "\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("form", { attrs: { action: "" } }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "email-login" } }, [
+                  _vm._v("E-mail")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.email,
+                      expression: "email"
+                    },
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|email",
+                      expression: "'required|email'"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "email",
+                    id: "email-login",
+                    "data-vv-name": "email",
+                    "error-messages": _vm.errors.collect("email"),
+                    required: ""
+                  },
+                  domProps: { value: _vm.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.email = $event.target.value
+                    }
+                  }
+                })
               ]),
               _vm._v(" "),
-              _c(
-                "v-card-text",
-                [
-                  _c(
-                    "v-alert",
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "senha-login" } }, [
+                  _vm._v("Senha")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
                     {
-                      attrs: { dismissible: "", type: "error" },
-                      model: {
-                        value: _vm.alert,
-                        callback: function($$v) {
-                          _vm.alert = $$v
-                        },
-                        expression: "alert"
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.password,
+                      expression: "password"
+                    },
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|min:6",
+                      expression: "'required|min:6'"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "password",
+                    id: "senha-login",
+                    "data-vv-name": "password",
+                    "error-messages": _vm.errors.collect("password"),
+                    required: ""
+                  },
+                  domProps: { value: _vm.password },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
                       }
-                    },
-                    [_vm._v("\n          " + _vm._s(_vm.alertmsg) + "\n      ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-container",
-                    { attrs: { "grid-list-md": "" } },
-                    [
-                      _c(
-                        "v-layout",
-                        { attrs: { wrap: "" } },
-                        [
-                          _c(
-                            "v-flex",
-                            { attrs: { xs12: "" } },
-                            [
-                              _c("v-text-field", {
-                                directives: [
-                                  {
-                                    name: "validate",
-                                    rawName: "v-validate",
-                                    value: "required|email",
-                                    expression: "'required|email'"
-                                  }
-                                ],
-                                attrs: {
-                                  label: "E-mail",
-                                  type: "email",
-                                  "data-vv-name": "email",
-                                  "error-messages": _vm.errors.collect("email"),
-                                  required: ""
-                                },
-                                model: {
-                                  value: _vm.email,
-                                  callback: function($$v) {
-                                    _vm.email = $$v
-                                  },
-                                  expression: "email"
-                                }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-flex",
-                            { attrs: { xs12: "" } },
-                            [
-                              _c("v-text-field", {
-                                directives: [
-                                  {
-                                    name: "validate",
-                                    rawName: "v-validate",
-                                    value: "required|min:6",
-                                    expression: "'required|min:6'"
-                                  }
-                                ],
-                                attrs: {
-                                  label: "Senha",
-                                  type: "password",
-                                  "data-vv-name": "password",
-                                  "error-messages": _vm.errors.collect(
-                                    "password"
-                                  ),
-                                  required: ""
-                                },
-                                model: {
-                                  value: _vm.password,
-                                  callback: function($$v) {
-                                    _vm.password = $$v
-                                  },
-                                  expression: "password"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-card-actions",
-                [
-                  _c("v-spacer"),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: { color: "blue darken-1", dark: "", flat: "" },
-                      on: { click: _vm.closeModal }
-                    },
-                    [_vm._v("Fechar")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: { color: "primary", dark: "" },
-                      on: { click: _vm.login }
-                    },
-                    [_vm._v("Entrar")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ],
-    1
+                      _vm.password = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      ])
+    ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title" }, [_vm._v("Login")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Fechar"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Login")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "button" } },
+        [_vm._v("Salvar mudanças")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
