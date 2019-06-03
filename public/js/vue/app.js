@@ -11909,6 +11909,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -11931,7 +11934,7 @@ vee_validate__WEBPACK_IMPORTED_MODULE_0__["Validator"].extend("unique_nickname",
   },
   data: function data() {
     return {
-      dialog: false,
+      success: false,
       loader: false,
       name: '',
       email: '',
@@ -11997,8 +12000,15 @@ vee_validate__WEBPACK_IMPORTED_MODULE_0__["Validator"].extend("unique_nickname",
             term: _this.term
           };
           axios.post(_this.basepath + 'auth/register', data).then(function (response) {
-            console.log('response: ', response);
-            _this.loader = false; //this.clear();
+            if (response.data.hasOwnProperty('status') && response.data.status) {
+              _this.loader = false;
+              _this.success = true;
+
+              _this.clear();
+            }
+          })["catch"](function (e) {
+            _this.success = false;
+            _this.loader = false;
           });
         }
       });
@@ -59648,6 +59658,21 @@ var render = function() {
           _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "modal-body" }, [
+            _vm.success
+              ? _c(
+                  "div",
+                  {
+                    staticClass: "alert alert-success",
+                    attrs: { role: "alert" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                     Cadastro realizado com sucesso! \n                     Você já pode entrar na plataforma.\n                "
+                    )
+                  ]
+                )
+              : _vm._e(),
+            _vm._v(" "),
             _c(
               "form",
               {
@@ -59923,7 +59948,7 @@ var render = function() {
                       }
                     ],
                     class: {
-                      "form-control": false,
+                      "d-inline": true,
                       "is-invalid":
                         _vm.errors.first("term") != undefined ? true : false
                     },
@@ -72172,8 +72197,8 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Work\Documents\ICCLESIA\icclesia-client\assets\vue\app.js */"./assets/vue/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Work\Documents\ICCLESIA\icclesia-client\assets\scss\main.scss */"./assets/scss/main.scss");
+__webpack_require__(/*! C:\Users\Tarcísio NOVO\Documents\ICCLESIA\icclesia-client\assets\vue\app.js */"./assets/vue/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Tarcísio NOVO\Documents\ICCLESIA\icclesia-client\assets\scss\main.scss */"./assets/scss/main.scss");
 
 
 /***/ })

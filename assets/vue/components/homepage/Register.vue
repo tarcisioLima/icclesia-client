@@ -7,7 +7,10 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                                    
+                     <div class="alert alert-success" role="alert" v-if="success">
+                         Cadastro realizado com sucesso! 
+                         Você já pode entrar na plataforma.
+                    </div>                   
                     <form class="default" @submit.prevent="register">
                         <div class="form-group">    
                             <label for="email-conta">E-mail</label>
@@ -44,9 +47,9 @@
 
                         <div class="form-group">
                             <label for="termo-conta">Aceito os termos de uso</label> 
-                            <input type="checkbox" id="termo-conta" v-model="term" v-validate="'required'" data-vv-name="term" :class="{'form-control': false, 'is-invalid': errors.first('term') != undefined ? true : false }">
+                            <input type="checkbox" id="termo-conta" v-model="term" v-validate="'required'" data-vv-name="term" :class="{'d-inline': true, 'is-invalid': errors.first('term') != undefined ? true : false }">
                             <div class="invalid-feedback">{{ errors.first('term') }}</div>
-                        </div>
+                        </div> 
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -80,7 +83,7 @@ export default {
   },
   data() {
       return {
-          dialog: false,       
+          success: false,       
           loader: false,
           name: '',
           email: '',
@@ -121,7 +124,7 @@ export default {
   },
   methods: {
     register() {
-      this.$validator.validateAll().then((v) => {             
+      this.$validator.validateAll().then((v) => {
         if(v) {
             this.loader = true;
             
@@ -134,9 +137,14 @@ export default {
             };
 
             axios.post(this.basepath + 'auth/register', data).then((response) => {
-              console.log('response: ', response)
-              this.loader = false;
-              //this.clear();
+                if(response.data.hasOwnProperty('status') && response.data.status){
+                    this.loader = false
+                    this.success = true
+                    this.clear()
+                }              
+            }).catch((e) => {
+                this.success = false;
+                this.loader = false;
             })
         }
       })

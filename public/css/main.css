@@ -10140,6 +10140,10 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 0;
 }
 
+input[type=checkbox].is-invalid + .invalid-feedback {
+  display: block;
+}
+
 @media (max-width: 768px) {
   .reset-pdr {
     padding-right: 15px;

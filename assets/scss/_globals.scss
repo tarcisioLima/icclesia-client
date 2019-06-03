@@ -27,6 +27,10 @@
     padding-left: 0;
 }
 
+input[type=checkbox].is-invalid + .invalid-feedback{
+    display: block;
+}
+
 @include media($sm, 'max') {
     .reset-pdr{
         padding-right: 15px;
