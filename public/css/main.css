@@ -10691,6 +10691,17 @@ h1, h2, h3, h4, h5, h6 {
 .home-wrapper {
   position: relative;
 }
+.home-wrapper .modal-content {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.home-wrapper .form-control {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+@media (min-width: 576px) {
+  .home-wrapper .modal-dialog {
+    max-width: 700px;
+  }
+}
 .home-wrapper > .content {
   flex-grow: 1;
   z-index: 100;

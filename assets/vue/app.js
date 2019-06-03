@@ -13,7 +13,7 @@ Vue.component('general-navbar', require('./components/Navbar.vue').default)
 
 //Homepage
 Vue.component('home-login-modal', require('./components/homepage/Login.vue').default)
-//Vue.component('home-login-register', require('./components/homepage/Register.vue').default)
+Vue.component('home-register-modal', require('./components/homepage/Register.vue').default)
 
 new Vue({
     el: '#app-icclesia' 

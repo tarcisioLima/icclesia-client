@@ -1,111 +1,67 @@
-<template>
-    <v-layout row justify-center>
-    <v-dialog v-model="dialog" persistent max-width="600px">     
-      <v-card>
-        <!-- Loader --> 
-        <v-progress-linear :indeterminate="this.loader"  v-if="this.loader"></v-progress-linear>
+<template>    
+    <div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Criar Conta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                                    
+                    <form class="default" @submit.prevent="register">
+                        <div class="form-group">    
+                            <label for="email-conta">E-mail</label>
+                            <input type="email" id="email-conta" v-model="email" data-vv-name="email" v-validate="'required|email|unique_email'" :class="{'form-control': true, 'is-invalid': errors.first('email') != undefined ? true : false }">
+                            <div class="invalid-feedback">{{ errors.first('email') }}</div>
+                        </div>
 
-        <v-card-title>
-            <span class="display-1 font-weight-medium">Cadastre-se</span>
-        </v-card-title>
+                        <div class="row">                            
+                            <div class="form-group col-md-6">
+                                <label for="nome-conta">Nome</label>                        
+                                <input type="text" id="nome-conta" v-model="name" data-vv-name="name" v-validate="'required'" :class="{'form-control': true, 'is-invalid': errors.first('name') != undefined ? true : false }">
+                                <div class="invalid-feedback">{{ errors.first('name') }}</div>
+                            </div>
+                            <div class="form-group col-md-6"> 
+                                <label for="apelido-conta">Apelido</label>
+                                <input type="text" id="apelido-conta" v-model="nickname" data-vv-name="nickname" v-validate="'required|regex:^[a-zA-Z-\s]+$|unique_nickname'" :class="{'form-control': true, 'is-invalid': errors.first('nickname') != undefined ? true : false }">
+                                <div class="invalid-feedback">{{ errors.first('nickname') }}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="senha-conta">Senha</label> 
+                                <input type="password" id="senha-conta" data-vv-name="password" v-model="password" v-validate="'required|min:6'" :class="{'form-control': true, 'is-invalid': errors.first('password') != undefined ? true : false }" ref="password">
+                                <div class="invalid-feedback">{{ errors.first('password') }}</div>
+                            </div>
 
-        <v-card-text>
-          <v-container grid-list-md>
-            <v-layout wrap>
-          
-              <v-flex xs12 md6>
-                <v-text-field 
-                  label="Nome"
-                  type="text"
-                  v-model="name"
-                  data-vv-name="name"
-                  v-validate="'required'"
-                  :error-messages="errors.collect('name')"
-                  required>
-                </v-text-field>
-              </v-flex>
+                            <div class="form-group col-md-6"> 
+                                <label for="rsenha-conta">Repita a senha</label> 
+                                <input type="password" id="rsenha-conta" data-vv-name="password_repeat" v-model="password_repeat" v-validate="'required|confirmed:password'" :class="{'form-control': true, 'is-invalid': errors.first('password_repeat') != undefined ? true : false }">
+                                <div class="invalid-feedback">{{ errors.first('password_repeat') }}</div>
+                            </div>
+                        </div>
 
-              <v-flex xs12 md6>
-                <v-text-field
-                  label="E-mail"
-                  type="email"
-                  v-model="email"
-                  data-vv-name="email"
-                  v-validate="'required|email|unique_email'"
-                  :error-messages="errors.collect('email')"
-                  required>
-                  </v-text-field>
-              </v-flex>
-
-              <v-flex md12>
-                <v-text-field
-                  label="Apelido"
-                  type="text"
-                  v-model="nickname"
-                  data-vv-name="nickname"
-                  v-validate="'required|regex:^[a-zA-Z-\s]+$|unique_nickname'"
-                  :error-messages="errors.collect('nickname')"
-                  required
-                ></v-text-field>
-              </v-flex>    
-
-              <v-flex md6>
-                <v-text-field
-                  label="Senha"
-                  type="password"
-                  data-vv-name="password"
-                  v-model="password"
-                  v-validate="'required|min:6'"
-                  :error-messages="errors.collect('password')"
-                  ref="password"
-                  required
-                ></v-text-field>
-              </v-flex> 
-
-              <v-flex md6>
-                <v-text-field
-                  label="Repita a senha"
-                  type="password"
-                  data-vv-name="password_repeat"
-                  v-model="password_repeat"
-                  v-validate="'required|confirmed:password'"
-                  :error-messages="errors.collect('password_repeat')"
-                  required
-                ></v-text-field>
-              </v-flex>                 
-              
-              <v-flex md12>
-                  <v-checkbox                   
-                    v-model="term"
-                    label="Aceito os termos de uso"
-                    :error-messages="errors.collect('term')"
-                    v-validate="'required'"
-                    data-vv-name="term"
-                    required>
-                  </v-checkbox>
-                </v-flex>
-
-                <use-term></use-term>
-
-            </v-layout>
-          </v-container>          
-        </v-card-text>
-
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click="closeModal">Fechar</v-btn>
-          <v-btn color="primary" @click="register">registrar</v-btn>
-        </v-card-actions>
-
-      </v-card>
-    </v-dialog>
-  </v-layout>
+                        <div class="form-group">
+                            <label for="termo-conta">Aceito os termos de uso</label> 
+                            <input type="checkbox" id="termo-conta" v-model="term" v-validate="'required'" data-vv-name="term" :class="{'form-control': false, 'is-invalid': errors.first('term') != undefined ? true : false }">
+                            <div class="invalid-feedback">{{ errors.first('term') }}</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" :disabled="loader" class="btn btn-secondary" @click="register">Registrar 
+                        <span v-if="loader" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>                   
+                </div>
+            </div>
+        </div>
+    </div>         
 </template>
 
-<script> 
-
-import { Validator } from "vee-validate";
+<script>
+import { Validator } from 'vee-validate'
 import customvalidations from '@/validations'
+import mixin from '@/mixins.js'
 
 Validator.extend("unique_email", {
     validate: customvalidations.isUniqueEmail,
@@ -118,7 +74,7 @@ Validator.extend("unique_nickname", {
 });
 
 export default {
-  props: ['dlog'],
+  mixins: [mixin],
   mounted() {
     this.$validator.localize('en', this.dictionary);
   },
@@ -165,23 +121,22 @@ export default {
   },
   methods: {
     register() {
-      this.$validator.validateAll().then((v) => {                
+      this.$validator.validateAll().then((v) => {             
         if(v) {
-          this.loader = true;
-          let data = {
-            name: this.name,
-            email: this.email,
-            username: this.nickname,
-            password: this.password,
-            term: this.term
-          };
-          this.$http.post(this.$store.getters.basepath + '/auth/register', data).then((response) => {            
-              //console.log('response: ', response)
+            this.loader = true;
+            
+            let data = {
+                name: this.name,
+                email: this.email,
+                username: this.nickname,
+                password: this.password,
+                term: this.term
+            };
+
+            axios.post(this.basepath + 'auth/register', data).then((response) => {
+              console.log('response: ', response)
               this.loader = false;
-              this.clear();
-            }).catch((e) => {
-                //let resp = e.response.data;          
-                this.loader = false;
+              //this.clear();
             })
         }
       })
@@ -198,10 +153,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-    .v-progress-linear {
-        margin: 0 0 1rem;
-    }
-    
-</style>

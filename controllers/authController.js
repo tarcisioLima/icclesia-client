@@ -4,7 +4,7 @@ const rp      = require('request-promise-native')
 const options = require('./helpers/request')
 
 router.post('/login', (req, res) => {    
-    rp(options.getOptions(req, 'POST')).then((body) => {
+    rp(options.getOptions('auth/login', req, 'POST')).then((body) => {
         if(body.msg === "Logado") {
             req.session.user = body.data
             req.session.save()
@@ -18,7 +18,13 @@ router.post('/login', (req, res) => {
 })
 
 router.post('/register', (req, res) => {   
-    //res.render('site/feed'); 
+    rp(options.getOptions('auth/register', req, 'POST')).then((body) => {
+        console.log('resposta: ', body)
+        res.status(200).send({status: true})
+    }).catch((err) => {   
+        console.log('caiu no erro: ', err.error )   
+        res.status(200).send(err.error)
+    });
 })
 
 module.exports = router

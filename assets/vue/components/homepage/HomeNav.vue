@@ -13,7 +13,7 @@
                         <a class="nav-link" href="#" @click.prevent="openModal('#modalLogin')">Entrar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" @click.prevent="openModal('modalRegister')">Registrar-se</a>
+                        <a class="nav-link" href="#" @click.prevent="openModal('#modalRegister')">Registrar-se</a>
                     </li>  
                     <li class="nav-item">
                         <a class="nav-link" href="#">Igrejas próximas <i class="material-icons ml-1">search</i></a>

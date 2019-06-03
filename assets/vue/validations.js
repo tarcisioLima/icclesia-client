@@ -4,17 +4,18 @@ import mixin from './mixins'
 //Validate Unique Email
 const isUniqueEmail = (value) => { 
    return new Promise(resolve => 
-        axios.post(mixin.methods.getBasePath() + '/auth/register', {email: value})
-        .catch(e => {
-            if(e.response.data.hasOwnProperty('email')) {
+        axios.post(mixin.methods.getBasePath() + 'auth/register', {email: value})
+        .then(e => {
+            let data = e.data
+            //console.log(data)
+            if(data.hasOwnProperty('email')) {
             return resolve({
                 valid: false,
-                data: { message: e.response.data.email }
+                data: { message: data.email[0] }
             })
             }else {
                 return resolve({valid: true})
             }
-            
         })
     )
 }
@@ -22,12 +23,14 @@ const isUniqueEmail = (value) => {
 //Validate Unique Nick
 const isUniqueNick = (value) => {
     return new Promise(resolve => 
-    axios.post(mixin.methods.getBasePath() + '/auth/register', {username: value})
-    .catch(e => {
-        if(e.response.data.hasOwnProperty('username')) {
+    axios.post(mixin.methods.getBasePath() + 'auth/register', {username: value})
+    .then(e => {
+        let data = e.data
+        //console.log(data)
+        if(data.hasOwnProperty('username')){
         return resolve({
             valid: false,
-            data: { message: e.response.data.username }
+            data: { message: data.username[0] }
         })
         }else {
             return resolve({valid: true})
