@@ -15,6 +15,9 @@ Vue.component('general-navbar', require('./components/Navbar.vue').default)
 Vue.component('home-login-modal', require('./components/homepage/Login.vue').default)
 Vue.component('home-register-modal', require('./components/homepage/Register.vue').default)
 
+//Publication
+Vue.component('publication', require('./components/publication/Publication.vue').default)
+
 new Vue({
     el: '#app-icclesia' 
 });

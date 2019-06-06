@@ -10698,7 +10698,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: rgba(255, 255, 255, 0.6);
 }
 @media (min-width: 576px) {
-  .home-wrapper .modal-dialog {
+  .home-wrapper #modalRegister .modal-dialog {
     max-width: 700px;
   }
 }

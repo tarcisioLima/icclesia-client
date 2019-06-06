@@ -5,7 +5,7 @@
     .form-control { background-color: rgba(255,255,255,0.6); }
 
     @include media(576px, 'min'){
-        .modal-dialog{
+        #modalRegister .modal-dialog{
             max-width: 700px;
         }
     }
