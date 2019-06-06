@@ -72844,8 +72844,8 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Tarcísio NOVO\Documents\ICCLESIA\icclesia-client\assets\vue\app.js */"./assets/vue/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Tarcísio NOVO\Documents\ICCLESIA\icclesia-client\assets\scss\main.scss */"./assets/scss/main.scss");
+__webpack_require__(/*! C:\Users\Work\Documents\ICCLESIA\icclesia-client\assets\vue\app.js */"./assets/vue/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Work\Documents\ICCLESIA\icclesia-client\assets\scss\main.scss */"./assets/scss/main.scss");
 
 
 /***/ })
