@@ -13,10 +13,8 @@
             </div>
         </div>
 
-        <div class="publication-body">
-            <div v-if="content.description">
-                {{content.description}}
-            </div>      
+        <div class="publication-body">            
+            {{content.description}}          
 
             <div class="shared-video" v-if="content.link.hasOwnProperty('youtube')">
                 <iframe class="video-frame" :src="content.link.youtube" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -34,7 +32,6 @@
                     </figcaption>
                 </figure>
             </div>
-
         </div>
         <div class="publication-footer">
             <ul class="nav-controls">
@@ -171,7 +168,11 @@
 </template>
 
 <script>
+
 export default {
-    props: ['content']
+    props: ['content'],
+    data(){
+        return {}
+    }
 }
 </script>
