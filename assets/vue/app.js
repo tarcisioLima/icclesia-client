@@ -16,8 +16,10 @@ Vue.component('home-login-modal', require('./components/homepage/Login.vue').def
 Vue.component('home-register-modal', require('./components/homepage/Register.vue').default)
 
 //Publication
-Vue.component('publication', require('./components/publication/Publication.vue').default)
+Vue.component('post-list', require('./components/publication/PostList.vue').default)
 
 new Vue({
     el: '#app-icclesia' 
 });
+
+

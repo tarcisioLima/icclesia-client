@@ -1,7 +1,8 @@
 module.exports = {
     data () {
         return  {
-            basepath: this.getBasePath()
+            basepath: this.getBasePath(),
+            api: 'http://monadaweb.com/api/v1/'
         }
     },
     methods: {

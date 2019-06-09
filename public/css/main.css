@@ -10590,6 +10590,7 @@ input[type=checkbox].is-invalid + .invalid-feedback {
 .publications-wrapper .publication-track .publication-card .publication-body .shared-link-content .meta-image img {
   width: 100%;
   height: auto;
+  transition: all 0.3s ease-in-out;
 }
 .publications-wrapper .publication-track .publication-card .publication-body .shared-link-content .meta-image .wrap-info {
   position: absolute;
@@ -10621,6 +10622,10 @@ input[type=checkbox].is-invalid + .invalid-feedback {
 }
 .publications-wrapper .publication-track .publication-card .publication-body .shared-link-content .meta-image .wrap-info .link:hover {
   color: #17bf63;
+}
+.publications-wrapper .publication-track .publication-card .publication-body .shared-link-content .meta-image:hover img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 .publications-wrapper .publication-track .publication-card .publication-body .shared-video {
   margin-top: 10px;

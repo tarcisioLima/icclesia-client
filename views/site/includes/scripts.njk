@@ -1,1 +1,7 @@
+{% if(token) %}
+<script id="setter-tk">
+    window.localStorage.getItem('user-token') != '{{token}}' ? window.localStorage.setItem('user-token', '{{token}}') : null;     
+    document.getElementById('setter-tk').remove()
+</script>
+{% endif %}
 <script src="/js/vue/app.js"></script>
