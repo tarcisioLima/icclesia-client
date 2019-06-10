@@ -1,4 +1,5 @@
 <template>
+<!-- https://scotch.io/tutorials/simple-asynchronous-infinite-scroll-with-vue-watchers -->
     <div class="publication-track">  
         <div v-if="loading">
             <skeleton-box v-for="i in 10" :key="i"></skeleton-box>
@@ -22,12 +23,18 @@ export default {
     data(){
         return{
             posts: [],
-            loading: true
+            loading: true,
+            currentIndex: 1,
+            bottom: false
         }
     },
     created(){
         //fetch first posts
-        this.fetchPosts()        
+        this.fetchPosts()      
+        
+        window.addEventListener('scroll', () => {
+            this.bottom = this.bottomVisible()
+        })
     },
     methods: {
         fetchPosts(quantity = 0){
@@ -35,12 +42,32 @@ export default {
             axios.get(this.api + 'user/feed/'+quantity).then((response) => {
                 console.log('res: ', response.data.data)
                 this.posts = this.posts.concat(response.data.data)
-                this.loading = false;
+                this.loading = false
+                if(quantity != 0){
+                    this.currentIndex++
+                }                
+                // if (this.bottomVisible()) {
+                //     this.fetchPosts(this.currentIndex)
+                // }
             })
             .catch((err) => {
                 console.log('deu ruim', err)
                 this.loading = false;
             })            
+        },
+        bottomVisible() {
+            const scrollY = window.scrollY
+            const visible = document.documentElement.clientHeight
+            const pageHeight = document.documentElement.scrollHeight
+            const bottomOfPage = visible + scrollY >= pageHeight
+            return bottomOfPage || pageHeight < visible
+        },
+    },
+    watch: {
+        bottom(bottom) {
+            if (bottom) {
+                this.fetchPosts(this.currentIndex)
+            }
         }
     },
     components:{

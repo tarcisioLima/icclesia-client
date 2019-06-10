@@ -12466,6 +12466,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -12477,27 +12478,55 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       posts: [],
-      loading: true
+      loading: true,
+      currentIndex: 1,
+      bottom: false
     };
   },
   created: function created() {
+    var _this = this;
+
     //fetch first posts
     this.fetchPosts();
+    window.addEventListener('scroll', function () {
+      _this.bottom = _this.bottomVisible();
+    });
   },
   methods: {
     fetchPosts: function fetchPosts() {
-      var _this = this;
+      var _this2 = this;
 
       var quantity = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
       this.loading = true;
       axios.get(this.api + 'user/feed/' + quantity).then(function (response) {
         console.log('res: ', response.data.data);
-        _this.posts = _this.posts.concat(response.data.data);
-        _this.loading = false;
+        _this2.posts = _this2.posts.concat(response.data.data);
+        _this2.loading = false;
+
+        if (quantity != 0) {
+          _this2.currentIndex++;
+        } // if (this.bottomVisible()) {
+        //     this.fetchPosts(this.currentIndex)
+        // }
+
       })["catch"](function (err) {
         console.log('deu ruim', err);
-        _this.loading = false;
+        _this2.loading = false;
       });
+    },
+    bottomVisible: function bottomVisible() {
+      var scrollY = window.scrollY;
+      var visible = document.documentElement.clientHeight;
+      var pageHeight = document.documentElement.scrollHeight;
+      var bottomOfPage = visible + scrollY >= pageHeight;
+      return bottomOfPage || pageHeight < visible;
+    }
+  },
+  watch: {
+    bottom: function bottom(_bottom) {
+      if (_bottom) {
+        this.fetchPosts(this.currentIndex);
+      }
     }
   },
   components: {
@@ -73607,8 +73636,8 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Tarcísio NOVO\Documents\ICCLESIA\icclesia-client\assets\vue\app.js */"./assets/vue/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Tarcísio NOVO\Documents\ICCLESIA\icclesia-client\assets\scss\main.scss */"./assets/scss/main.scss");
+__webpack_require__(/*! C:\Users\Work\Documents\ICCLESIA\icclesia-client\assets\vue\app.js */"./assets/vue/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Work\Documents\ICCLESIA\icclesia-client\assets\scss\main.scss */"./assets/scss/main.scss");
 
 
 /***/ })
