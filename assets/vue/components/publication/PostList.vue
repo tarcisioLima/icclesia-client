@@ -2,10 +2,10 @@
 <!-- https://scotch.io/tutorials/simple-asynchronous-infinite-scroll-with-vue-watchers -->
     <div class="publication-track">  
         <div v-if="loading">
-            <skeleton-box v-for="i in 10" :key="i"></skeleton-box>
+            <skeleton-box v-for="i in 10" :key="currentIndex + i"></skeleton-box>
         </div>
         <div v-else>             
-            <post-item v-for="item in posts" :key="item.id" :content="item" :postload="loading"></post-item>
+            <post-item v-for="(item, index) in posts" :key="currentIndex + index" :content="item" :postload="loading"></post-item>
         </div>
     </div>
 </template>

@@ -61412,15 +61412,15 @@ var render = function() {
       ? _c(
           "div",
           _vm._l(10, function(i) {
-            return _c("skeleton-box", { key: i })
+            return _c("skeleton-box", { key: _vm.currentIndex + i })
           }),
           1
         )
       : _c(
           "div",
-          _vm._l(_vm.posts, function(item) {
+          _vm._l(_vm.posts, function(item, index) {
             return _c("post-item", {
-              key: item.id,
+              key: _vm.currentIndex + index,
               attrs: { content: item, postload: _vm.loading }
             })
           }),
@@ -73636,8 +73636,8 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Work\Documents\ICCLESIA\icclesia-client\assets\vue\app.js */"./assets/vue/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Work\Documents\ICCLESIA\icclesia-client\assets\scss\main.scss */"./assets/scss/main.scss");
+__webpack_require__(/*! C:\Users\Tarcísio NOVO\Documents\ICCLESIA\icclesia-client\assets\vue\app.js */"./assets/vue/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Tarcísio NOVO\Documents\ICCLESIA\icclesia-client\assets\scss\main.scss */"./assets/scss/main.scss");
 
 
 /***/ })
