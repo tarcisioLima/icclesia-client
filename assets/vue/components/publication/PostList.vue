@@ -6,6 +6,17 @@
         </div>
         <div v-else>             
             <post-item v-for="(item, index) in posts" :key="currentIndex + index" :content="item" :postload="loading"></post-item>
+            
+            <!-- New post loader -->
+            <div class="publication-card d-flex justify-content-center" v-if="bottom">
+                <div class="publication-header">
+                    <div class="spinner-border text-secondary" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <!-- ! New post loader ! -->
+
         </div>
     </div>
 </template>
@@ -24,13 +35,22 @@ export default {
         return{
             posts: [],
             loading: true,
+            isPostsLoading: false,
             currentIndex: 1,
             bottom: false
         }
     },
     created(){
         //fetch first posts
-        this.fetchPosts()      
+        this.loading = true;
+        axios.get(this.api + 'user/feed').then((response) => {           
+            this.posts = this.posts.concat(response.data.data)            
+            this.loading = false
+        })
+        .catch((err) => {
+            console.log('deu ruim', err)
+            this.loading = false;
+        })
         
         window.addEventListener('scroll', () => {
             this.bottom = this.bottomVisible()
@@ -38,22 +58,17 @@ export default {
     },
     methods: {
         fetchPosts(quantity = 0){
-            this.loading = true;
+            this.isPostsLoading = true
             axios.get(this.api + 'user/feed/'+quantity).then((response) => {
                 console.log('res: ', response.data.data)
                 this.posts = this.posts.concat(response.data.data)
-                this.loading = false
-                if(quantity != 0){
-                    this.currentIndex++
-                }                
-                // if (this.bottomVisible()) {
-                //     this.fetchPosts(this.currentIndex)
-                // }
+                this.currentIndex++
+                this.isPostsLoading = false;
             })
             .catch((err) => {
+                this.isPostsLoading = false;
                 console.log('deu ruim', err)
-                this.loading = false;
-            })            
+            })
         },
         bottomVisible() {
             const scrollY = window.scrollY
@@ -65,7 +80,7 @@ export default {
     },
     watch: {
         bottom(bottom) {
-            if (bottom) {
+            if (bottom && !this.isPostsLoading) {
                 this.fetchPosts(this.currentIndex)
             }
         }

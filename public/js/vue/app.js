@@ -12467,6 +12467,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -12479,6 +12490,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       posts: [],
       loading: true,
+      isPostsLoading: false,
       currentIndex: 1,
       bottom: false
     };
@@ -12487,7 +12499,14 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     //fetch first posts
-    this.fetchPosts();
+    this.loading = true;
+    axios.get(this.api + 'user/feed').then(function (response) {
+      _this.posts = _this.posts.concat(response.data.data);
+      _this.loading = false;
+    })["catch"](function (err) {
+      console.log('deu ruim', err);
+      _this.loading = false;
+    });
     window.addEventListener('scroll', function () {
       _this.bottom = _this.bottomVisible();
     });
@@ -12497,21 +12516,15 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       var quantity = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-      this.loading = true;
+      this.isPostsLoading = true;
       axios.get(this.api + 'user/feed/' + quantity).then(function (response) {
         console.log('res: ', response.data.data);
         _this2.posts = _this2.posts.concat(response.data.data);
-        _this2.loading = false;
-
-        if (quantity != 0) {
-          _this2.currentIndex++;
-        } // if (this.bottomVisible()) {
-        //     this.fetchPosts(this.currentIndex)
-        // }
-
+        _this2.currentIndex++;
+        _this2.isPostsLoading = false;
       })["catch"](function (err) {
+        _this2.isPostsLoading = false;
         console.log('deu ruim', err);
-        _this2.loading = false;
       });
     },
     bottomVisible: function bottomVisible() {
@@ -12524,7 +12537,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     bottom: function bottom(_bottom) {
-      if (_bottom) {
+      if (_bottom && !this.isPostsLoading) {
         this.fetchPosts(this.currentIndex);
       }
     }
@@ -61418,17 +61431,46 @@ var render = function() {
         )
       : _c(
           "div",
-          _vm._l(_vm.posts, function(item, index) {
-            return _c("post-item", {
-              key: _vm.currentIndex + index,
-              attrs: { content: item, postload: _vm.loading }
-            })
-          }),
-          1
+          [
+            _vm._l(_vm.posts, function(item, index) {
+              return _c("post-item", {
+                key: _vm.currentIndex + index,
+                attrs: { content: item, postload: _vm.loading }
+              })
+            }),
+            _vm._v(" "),
+            _vm.bottom
+              ? _c(
+                  "div",
+                  {
+                    staticClass:
+                      "publication-card d-flex justify-content-center"
+                  },
+                  [_vm._m(0)]
+                )
+              : _vm._e()
+          ],
+          2
         )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "publication-header" }, [
+      _c(
+        "div",
+        {
+          staticClass: "spinner-border text-secondary",
+          attrs: { role: "status" }
+        },
+        [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -73636,8 +73678,8 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Tarcísio NOVO\Documents\ICCLESIA\icclesia-client\assets\vue\app.js */"./assets/vue/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Tarcísio NOVO\Documents\ICCLESIA\icclesia-client\assets\scss\main.scss */"./assets/scss/main.scss");
+__webpack_require__(/*! C:\Users\Work\Documents\ICCLESIA\icclesia-client\assets\vue\app.js */"./assets/vue/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Work\Documents\ICCLESIA\icclesia-client\assets\scss\main.scss */"./assets/scss/main.scss");
 
 
 /***/ })
