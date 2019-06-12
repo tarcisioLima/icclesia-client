@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import mixin from '@/mixins.js'
+import mixin from '@/mixins/generics'
 
 export default {   
     mixins: [mixin],

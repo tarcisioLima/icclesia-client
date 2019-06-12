@@ -5,7 +5,7 @@
             <skeleton-box v-for="i in 10" :key="currentIndex + i"></skeleton-box>
         </div>
         <div v-else>             
-            <post-item v-for="(item, index) in posts" :key="currentIndex + index" :content="item" :postload="loading"></post-item>
+            <post-item v-for="(item, index) in posts" :key="currentIndex + index" :post_content="item" :postload="loading"></post-item>
             
             <!-- New post loader -->
             <div class="publication-card d-flex justify-content-center" v-if="bottom">
@@ -24,7 +24,7 @@
 <script>
 import PostItem from '@/components/publication/PostItem'
 import Skeleton from '@/components/publication/Skeleton'
-import mixin from '@/mixins'
+import mixin from '@/mixins/generics'
 
 export default {
     mixins: [mixin],

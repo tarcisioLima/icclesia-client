@@ -1,5 +1,5 @@
 import axios from 'axios';
-import mixin from './mixins'
+import mixin from '@/mixins/generics'
 
 //Validate Unique Email
 const isUniqueEmail = (value) => { 

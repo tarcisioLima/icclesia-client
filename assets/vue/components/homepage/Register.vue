@@ -64,7 +64,7 @@
 <script>
 import { Validator } from 'vee-validate'
 import customvalidations from '@/validations'
-import mixin from '@/mixins.js'
+import mixin from '@/mixins/generics'
 
 Validator.extend("unique_email", {
     validate: customvalidations.isUniqueEmail,
