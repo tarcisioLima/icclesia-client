@@ -13,6 +13,7 @@ router.post('/login', (req, res) => {
             res.status(200).send({msg: body.msg, status: false})            
         }        
     }).catch((err) => {      
+        console.log('erro: ', err)
         res.status(500).send('Houve um erro na API :(')
     });
 })

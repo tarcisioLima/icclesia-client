@@ -193,7 +193,6 @@ export default {
             if(this.likeAction){
                 this.likeAction = false
                 
-                //curtir
                 if(!post.liked){
                     post.liked = 1
                     post.likes++

@@ -717,7 +717,7 @@ module.exports = {
   data: function data() {
     return {
       basepath: this.getBasePath(),
-      api: 'http://monadaweb.com/api/v1/'
+      api: this.getApi()
     };
   },
   methods: {
@@ -725,6 +725,13 @@ module.exports = {
       var url = window.location.href;
       var arr = url.split("/");
       return arr[0] + "//" + arr[2] + '/';
+    },
+    getApi: function getApi() {
+      if (window.location.href.split("/")[2].includes("localhost")) {
+        return 'http://localhost:8000/api/v1/';
+      } else {
+        return 'http://monadaweb.com/api/v1/';
+      }
     }
   }
 };
@@ -12503,7 +12510,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       if (this.likeAction) {
-        this.likeAction = false; //curtir
+        this.likeAction = false;
 
         if (!post.liked) {
           post.liked = 1;
