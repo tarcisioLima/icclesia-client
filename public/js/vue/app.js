@@ -12098,10 +12098,11 @@ __webpack_require__.r(__webpack_exports__);
         if (v) {
           _this.loader = true;
           axios.post(_this.basepath + 'auth/login', {
-            email: _this.email,
+            user: _this.email,
             password: _this.password
           }).then(function (response) {
-            //console.log(response);
+            console.log('then: ', response);
+
             if (!response.data.status) {
               _this.alertmsg = response.data.msg;
               _this.alert = true;
@@ -12616,7 +12617,7 @@ __webpack_require__.r(__webpack_exports__);
 
     //fetch first posts
     this.loading = true;
-    axios.get(this.api + 'user/feed').then(function (response) {
+    axios.get(this.api + 'user/feed?page=' + this.currentIndex).then(function (response) {
       _this.posts = _this.posts.concat(response.data.data);
       _this.loading = false;
     })["catch"](function (err) {
@@ -12633,7 +12634,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var quantity = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
       this.isPostsLoading = true;
-      axios.get(this.api + 'user/feed/' + quantity).then(function (response) {
+      axios.get(this.api + 'user/feed?page=' + quantity).then(function (response) {
         console.log('res: ', response.data.data);
         _this2.posts = _this2.posts.concat(response.data.data);
         _this2.currentIndex++;
@@ -78087,18 +78088,12 @@ var render = function() {
           _vm._m(4),
           _vm._v(" "),
           _c("li", { staticClass: "item" }, [
-            _c(
-              "a",
-              { attrs: { href: "/perfil", title: _vm.all.user.username } },
-              [
-                _c("figure", { staticClass: "wrap-image" }, [
-                  _c("img", { attrs: { src: _vm.all.user.image, alt: "logo" } })
-                ])
-              ]
-            )
+            _c("a", { attrs: { href: "/perfil", title: _vm.all.username } }, [
+              _vm._m(5)
+            ])
           ]),
           _vm._v(" "),
-          _vm._m(5)
+          _vm._m(6)
         ])
       ])
     ]
@@ -78215,6 +78210,14 @@ var staticRenderFns = [
           _c("i", { staticClass: "material-icons" }, [_vm._v("notifications")])
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", { staticClass: "wrap-image" }, [
+      _c("img", { attrs: { src: "", alt: "logo" } })
     ])
   },
   function() {

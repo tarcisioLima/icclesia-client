@@ -67,11 +67,11 @@ export default {
                 if(v) {
                     this.loader = true; 
                     axios.post(this.basepath + 'auth/login', {
-                        email: this.email,
+                        user: this.email,
                         password: this.password
                     })
-                    .then((response) =>{
-                        //console.log(response);
+                    .then((response) => {                        
+                        console.log('then: ', response)
                         if(!response.data.status){
                             this.alertmsg = response.data.msg
                             this.alert = true

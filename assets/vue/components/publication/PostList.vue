@@ -43,7 +43,7 @@ export default {
     created(){
         //fetch first posts
         this.loading = true;
-        axios.get(this.api + 'user/feed').then((response) => {           
+        axios.get(this.api + 'user/feed?page='+this.currentIndex).then((response) => {           
             this.posts = this.posts.concat(response.data.data)            
             this.loading = false
         })
@@ -59,7 +59,7 @@ export default {
     methods: {
         fetchPosts(quantity = 0){
             this.isPostsLoading = true
-            axios.get(this.api + 'user/feed/'+quantity).then((response) => {
+            axios.get(this.api + 'user/feed?page='+quantity).then((response) => {
                 console.log('res: ', response.data.data)
                 this.posts = this.posts.concat(response.data.data)
                 this.currentIndex++

@@ -3,16 +3,16 @@ const router  = express.Router()
 const rp      = require('request-promise-native')
 const options = require('./helpers/request')
 
-router.post('/login', (req, res) => {    
-    rp(options.getOptions('auth/login', req, 'POST')).then((body) => {
-        if(body.msg === "Logado") {
+router.post('/login', (req, res) => {
+    rp(options.getOptions('auth/login', req, 'POST')).then((body) => {      
+        if(body.success) {
             req.session.user = body.data
             req.session.save()
             res.status(200).send({status: true})
-        }else {   
+        }else {
             res.status(200).send({msg: body.msg, status: false})            
-        }        
-    }).catch((err) => {      
+        }  
+    }).catch((err) => {
         console.log('erro: ', err)
         res.status(500).send('Houve um erro na API :(')
     });

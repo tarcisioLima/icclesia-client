@@ -51,9 +51,9 @@
                     </a>
                 </li>
                 <li class="item">
-                    <a href="/perfil" :title="all.user.username">
+                    <a href="/perfil" :title="all.username">
                     <figure class="wrap-image">
-                        <img :src="all.user.image" alt="logo">
+                        <img src="" alt="logo">
                     </figure>
                     </a>
                 </li>
