@@ -16,7 +16,7 @@ Deve-se criar um .env na raiz da projeto, com este conteúdo:
 
 ```
 ENV=development
-DEV_API_URL=localhost:8000/api/v1/
+DEV_API_URL=http://localhost:8000/api/v1/
 PROD_API_URL=https://monadaweb.com/api/v1/
 DEV_PORT=3000
 PROD_PORT=3000

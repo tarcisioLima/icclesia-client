@@ -109,6 +109,118 @@
                         }
                     }
 
+                    //post-event
+                    .post-event{
+                        margin-top: 15px;
+
+                        .frame-image{
+                            height: 250px;
+                            position: relative; 
+                            border-top-left-radius: 10px;
+                            border-top-right-radius: 10px;
+                            overflow: hidden;
+                            margin-bottom: 0;
+
+                            .img{
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+
+                            .wrap-info{
+                                position: absolute;
+                                top: 0; left: 0; bottom: 0; right: 0;
+                                display: flex;
+                                flex-flow: column wrap;
+                                justify-content: flex-end;
+                                padding: 15px 15px 10px 15px;
+                                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.60) 1%, rgba(0,0,0,0) 50%);
+                                
+                                .title{
+                                    color: $white;
+                                    font-size: 1.7em;
+                                    margin-bottom: 5px;
+                                }
+
+                                .event-info-list{
+                                    display: flex;
+                                    align-items: center;
+                                    background: rgba(0,0,0,0.1);
+
+                                    li{
+                                        display: inline-block;
+                                        padding: 0.1rem 0.5rem;
+                                        border-radius: 20px;
+                                        color: $white;
+                                        font-size: 12px;
+                                        
+                                        &:not(:last-child){
+                                            margin-right: 5px;
+                                        }
+
+                                        &:first-child{
+                                            padding-left: 0;
+                                        }
+
+                                        &.time{
+                                            border: 1px solid $white;
+                                        }
+
+                                        &.price{
+                                            border: 1px solid $green;
+                                            color: $green_light;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .event-desc{
+                            padding: 15px;
+                            border-left: 1px solid $gray;
+                            border-right: 1px solid $gray;
+                            border-bottom: 1px solid $gray;
+                            border-bottom-left-radius: 10px;
+                            border-bottom-right-radius: 10px;
+                            transition: border 0.3s ease-out;
+                        }
+                        .event-controls{
+                            display: flex;       
+                            align-items: center;
+                            margin-top: 10px;
+
+                            .btn-default{
+                                border-radius: 8px;
+                                font-weight: 400;
+                                background: transparent;
+                                color: $color-1!important;
+                                border: 1px solid $color-1;
+                                margin-right: 10px;
+
+                                &:hover{
+                                    background: $color-1;
+                                    color: $white!important;
+                                }
+                            }
+
+                            .attend-friends{
+                                color: $color-1;
+                                text-decoration: underline;
+                                &:hover{
+                                    transition: 0.3s;
+                                    text-decoration: none;
+                                    color: darken($color-1, 10%);
+                                }
+                                
+                            }
+                        }
+
+                        &:hover{
+                            .event-desc{
+                                border-color: darken($gray, 10%);
+                            }
+                        }
+                    }
+
                     //share external link
                     .shared-link-content{
                         margin-top: 10px;                      
@@ -166,6 +278,7 @@
                             }
                         }
                     }
+
                     //video share
                     .shared-video{
                         margin-top: 10px;
