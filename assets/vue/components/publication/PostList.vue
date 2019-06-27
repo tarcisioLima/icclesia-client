@@ -1,14 +1,13 @@
 <template>
+<!-- https://scotch.io/tutorials/simple-asynchronous-infinite-scroll-with-vue-watchers -->
     <div class="publication-track">  
         <div v-if="loading">
             <skeleton-box v-for="i in 10" :key="currentIndex + i"></skeleton-box>
         </div>
         <div v-else>             
             <post-item v-for="(item, index) in posts" :key="currentIndex + index" :post_content="item" :postload="loading"></post-item>
-            <div class="publication-track">
-                <post-item v-for="i in 10" :key="i" :post_content="i" :postload="false"></post-item>
-            </div>
-            <!-- POST LOADER -->
+            <!-- <post-item v-for="item in 10" :key="item" :post_content="false" :postload="false"></post-item> -->
+            <!-- New post loader -->
             <div class="publication-card d-flex justify-content-center" v-if="bottom">
                 <div class="publication-header">
                     <div class="spinner-border text-secondary" role="status">
@@ -16,7 +15,8 @@
                     </div>
                 </div>
             </div>
-            <!-- # POST LOADER # -->
+            <!-- ! New post loader ! -->
+
         </div>
     </div>
 </template>

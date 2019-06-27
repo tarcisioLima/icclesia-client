@@ -109,8 +109,8 @@
                         }
                     }
 
-                    //post-event
-                    .post-event{
+                    //post-event and post-group
+                    .post-event, .post-group{
                         margin-top: 15px;
 
                         .frame-image{
@@ -220,6 +220,20 @@
                             }
                         }
                     }
+                    
+                    //post-group specific changes
+                    .post-group{
+                        .frame-image{
+                            .wrap-info{
+                                background: rgba(0, 0, 0, 0.2);
+                            }
+                        }
+                        .event-desc{
+                            font-size: 13px;
+                            line-height: 1.3;
+                        }
+                    }
+
 
                     //share external link
                     .shared-link-content{

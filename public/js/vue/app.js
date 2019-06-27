@@ -12540,6 +12540,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -79223,18 +79266,6 @@ var render = function() {
               })
             }),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "publication-track" },
-              _vm._l(10, function(i) {
-                return _c("post-item", {
-                  key: i,
-                  attrs: { post_content: i, postload: false }
-                })
-              }),
-              1
-            ),
-            _vm._v(" "),
             _vm.bottom
               ? _c(
                   "div",
@@ -91474,8 +91505,8 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Work\Documents\ICCLESIA\icclesia-client\assets\vue\app.js */"./assets/vue/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Work\Documents\ICCLESIA\icclesia-client\assets\scss\main.scss */"./assets/scss/main.scss");
+__webpack_require__(/*! C:\Users\Tarcísio NOVO\Documents\ICCLESIA\icclesia-client\assets\vue\app.js */"./assets/vue/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Tarcísio NOVO\Documents\ICCLESIA\icclesia-client\assets\scss\main.scss */"./assets/scss/main.scss");
 
 
 /***/ })
