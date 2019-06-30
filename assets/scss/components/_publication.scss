@@ -234,6 +234,108 @@
                         }
                     }
 
+                    //post-profile
+                    .post-profile{
+                        display: flex;
+                        margin-top: 10px;
+                        border-radius: 10px;
+                        border: 1px solid darken($gray, 10%);
+                        overflow: hidden;
+
+                        .frame{
+                            width: 35%;
+                            margin-bottom: 0;
+
+                            .img{
+                               width: 100%;
+                               height: 100%; 
+                               object-fit: cover;
+                            }
+                        }
+
+                        .content{
+                            width: 65%;
+                            padding: 10px;
+
+                            .name{
+                                font-size: 1.6em;
+                                font-weight: 400;
+                                color: $color-1;
+                                margin-bottom: 5px;
+
+                                a{ color: inherit; }
+                            }
+
+                            .description{
+                                margin-bottom: 15px;
+                                font-size: 14px;
+                            }
+
+                            .share{
+                                margin-bottom: 10px;
+
+                                .username{
+                                    color: darken($color-1, 10%);
+                                    margin-right: 5px;
+                                    font-size: 16px;
+                                }
+
+                                .btn-default{
+                                    padding: 0.2rem 0.8rem;
+                                    background: transparent;
+                                    color: $color-1!important;
+                                    border: 1px solid $color-1;
+                                    font-weight: 400;
+
+                                    &:hover{
+                                        background: $color-1;
+                                        color: $white!important;
+                                    }
+                                }
+                            }
+
+                            .info-list{
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+
+                                li{
+                                    text-align: center;
+                                    color: $color-1;
+                                    font-size: 12px;
+                                    line-height: 17px;
+
+                                    .total{
+                                        display: block;
+                                        font-weight: 600;
+                                        font-size: 16px;
+                                    }
+                                }
+                            }
+
+                        }
+
+                        //Mobile adjust for post-profile
+                        @media (max-width: 568px){
+                            .frame{
+                                width: 45px;
+                                height: 45px;
+                                border-radius: 50%;
+                                overflow: hidden;
+                                margin: 10px 0 0 10px;
+                            }
+
+                            .content{
+                                width: calc(100% - 45px);
+
+                                .name{
+                                    font-size: 1.3em;
+                                }
+                            }
+                        }
+                    }                    
+
+
 
                     //share external link
                     .shared-link-content{

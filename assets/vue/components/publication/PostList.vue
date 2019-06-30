@@ -1,5 +1,4 @@
 <template>
-<!-- https://scotch.io/tutorials/simple-asynchronous-infinite-scroll-with-vue-watchers -->
     <div class="publication-track">  
         <div v-if="loading">
             <skeleton-box v-for="i in 10" :key="currentIndex + i"></skeleton-box>
@@ -15,7 +14,7 @@
                     </div>
                 </div>
             </div>
-            <!-- ! New post loader ! -->
+            <!-- ! New post loader ! --> 
 
         </div>
     </div>
@@ -43,8 +42,8 @@ export default {
     created(){
         //fetch first posts
         this.loading = true;
-        axios.get(this.api + 'user/feed?page='+this.currentIndex).then((response) => {           
-            this.posts = this.posts.concat(response.data.data)            
+        axios.get(this.api + 'user/feed?page='+this.currentIndex).then((response) => {
+            this.posts = this.posts.concat(response.data)
             this.loading = false
         })
         .catch((err) => {
@@ -60,8 +59,8 @@ export default {
         fetchPosts(quantity = 0){
             this.isPostsLoading = true
             axios.get(this.api + 'user/feed?page='+quantity).then((response) => {
-                console.log('res: ', response.data.data)
-                this.posts = this.posts.concat(response.data.data)
+                console.log('res: ', response.data)
+                this.posts = this.posts.concat(response.data)
                 this.currentIndex++
                 this.isPostsLoading = false;
             })

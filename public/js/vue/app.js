@@ -12583,6 +12583,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -12684,7 +12725,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -12708,7 +12748,7 @@ __webpack_require__.r(__webpack_exports__);
     //fetch first posts
     this.loading = true;
     axios.get(this.api + 'user/feed?page=' + this.currentIndex).then(function (response) {
-      _this.posts = _this.posts.concat(response.data.data);
+      _this.posts = _this.posts.concat(response.data);
       _this.loading = false;
     })["catch"](function (err) {
       console.log('deu ruim', err);
@@ -12725,8 +12765,8 @@ __webpack_require__.r(__webpack_exports__);
       var quantity = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
       this.isPostsLoading = true;
       axios.get(this.api + 'user/feed?page=' + quantity).then(function (response) {
-        console.log('res: ', response.data.data);
-        _this2.posts = _this2.posts.concat(response.data.data);
+        console.log('res: ', response.data);
+        _this2.posts = _this2.posts.concat(response.data);
         _this2.currentIndex++;
         _this2.isPostsLoading = false;
       })["catch"](function (err) {
