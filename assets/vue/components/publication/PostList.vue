@@ -1,22 +1,22 @@
 <template>
     <div class="publication-track">  
-        <div v-if="loading">
+        <!-- <div v-if="loading">
             <skeleton-box v-for="i in 10" :key="currentIndex + i"></skeleton-box>
         </div>
-        <div v-else>             
-            <post-item v-for="(item, index) in posts" :key="currentIndex + index" :post_content="item" :postload="loading"></post-item>
-            <!-- <post-item v-for="item in 10" :key="item" :post_content="false" :postload="false"></post-item> -->
+        <div v-else>              -->
+            <!-- <post-item v-for="(item, index) in posts" :key="currentIndex + index" :post_content="item" :postload="loading"></post-item> -->
+            <post-item v-for="item in 10" :key="item" :post_content="false" :postload="false"></post-item>
             <!-- New post loader -->
-            <div class="publication-card d-flex justify-content-center" v-if="bottom">
+            <!-- <div class="publication-card d-flex justify-content-center" v-if="bottom">
                 <div class="publication-header">
                     <div class="spinner-border text-secondary" role="status">
                         <span class="sr-only">Loading...</span>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- ! New post loader ! --> 
 
-        </div>
+        <!-- </div> -->
     </div>
 </template>
 

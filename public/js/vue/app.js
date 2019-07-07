@@ -12624,6 +12624,59 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -79151,119 +79204,94 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "publication-card" }, [
-    _c("div", { staticClass: "publication-header" }, [
-      _c("div", { staticClass: "perfil-photo" }, [
-        _c("img", {
-          staticClass: "img",
-          attrs: { src: _vm.content.author.image, alt: _vm.content.author.name }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "user-desc" }, [
-        _c("h5", { staticClass: "name" }, [
-          _c("a", { attrs: { href: "" } }, [
-            _vm._v("\n            " + _vm._s(_vm.content.author.name) + " "),
-            _c("span", { staticClass: "usertag" }, [
-              _vm._v("@" + _vm._s(_vm.content.author.username))
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "date" }, [
-          _vm._v(_vm._s(_vm.publicationDate(_vm.content.date)))
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "publication-body" }, [
-      _vm._v(
-        "            \n        " +
-          _vm._s(_vm.content.description) +
-          "          \n\n        "
-      ),
-      _vm.content.link.hasOwnProperty("youtube")
-        ? _c("div", { staticClass: "shared-video" }, [
-            _c("iframe", {
-              staticClass: "video-frame",
-              attrs: {
-                src: _vm.content.link.youtube,
-                frameborder: "0",
-                allow:
-                  "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
-                allowfullscreen: ""
-              }
-            })
-          ])
-        : _c("div", { staticClass: "shared-link-content" }, [
-            _c("figure", { staticClass: "meta-image" }, [
-              _c(
-                "a",
-                { attrs: { href: _vm.content.link.url, target: "_blank" } },
-                [_c("img", { attrs: { src: _vm.content.link.image, alt: "" } })]
-              ),
-              _vm._v(" "),
-              _c("figcaption", { staticClass: "wrap-info" }, [
-                _c("h2", { staticClass: "title" }, [
-                  _vm._v(_vm._s(_vm.content.link.title))
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "desc" }, [
-                  _vm._v(_vm._s(_vm.content.link.description))
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "link", attrs: { href: "" } }, [
-                  _vm._v(_vm._s(_vm.content.link.url))
-                ])
-              ])
-            ])
-          ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "publication-footer" }, [
-      _c("ul", { staticClass: "nav-controls" }, [
-        _c(
-          "li",
-          {
-            class: { like: true, active: _vm.content.liked },
-            on: {
-              click: function($event) {
-                return _vm.like(_vm.content)
-              }
-            }
-          },
-          [
-            _c("a", [
-              _c("span", { staticClass: "total" }, [
-                _vm._v(_vm._s(_vm.content.likes))
-              ])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c("li", { staticClass: "share", on: { click: _vm.share } }, [
-          _vm._m(1)
-        ])
-      ])
-    ])
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "comment" }, [
-      _c("a", [_c("span", { staticClass: "total" }, [_vm._v("74")])])
+    return _c("div", { staticClass: "publication-card" }, [
+      _c("div", { staticClass: "publication-header" }, [
+        _c("div", { staticClass: "perfil-photo" }, [
+          _c("img", {
+            staticClass: "img",
+            attrs: { src: "/images/me.jpg", alt: "teste" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "user-desc" }, [
+          _c("h5", { staticClass: "name" }, [
+            _c("a", { attrs: { href: "" } }, [
+              _vm._v("\n            Teste "),
+              _c("span", { staticClass: "usertag" }, [_vm._v("@teste")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "date" }, [_vm._v("1min atrás")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "publication-body" }, [
+        _c("div", { staticClass: "post-question" }, [
+          _c("div", { staticClass: "question-title" }, [
+            _c("strong", [_vm._v("Resposta N° 92 - ")]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "answer-link",
+                attrs: { href: "", title: "gmoraiz" }
+              },
+              [
+                _vm._v("@gmoraiz "),
+                _c("div", [
+                  _c("img", {
+                    staticClass: "img",
+                    attrs: { src: "/images/me.jpg", alt: "@gmoraiz" }
+                  })
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "publication-card" }, [
+            _c("div", { staticClass: "publication-header" }, [
+              _c("div", { staticClass: "perfil-photo" }, [
+                _c("img", {
+                  staticClass: "img",
+                  attrs: { src: "/images/tarcisio.jpg", alt: "tarcisio" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "user-desc" }, [
+                _c("h5", { staticClass: "name" }, [
+                  _c("a", { attrs: { href: "" } }, [
+                    _vm._v("\n                            Tarcísio Thallys "),
+                    _c("span", { staticClass: "usertag" }, [
+                      _vm._v("@tarcisio_thallys")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "date" }, [_vm._v("59m")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "publication-body gaped" }, [
+              _vm._v(
+                "\n                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo ad at fugiat id accusamus et dolor, molestiae dolorem \n                    eligendi explicabo totam asperiores incidunt voluptatem, quam velit a laudantium dolore quasi.\n                    \n                    "
+              ),
+              _c("div", { staticClass: "answer-text-box" }, [
+                _vm._v(
+                  "\n                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit sit exercitationem aliquam fuga? Voluptate doloremque,\n                        recusandae aliquid, quae veritatis facilis possimus maiores rem culpa impedit sint ipsa officia, fugiat eligendi?\n                    "
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", [_c("span", { staticClass: "total" }, [_vm._v("15")])])
   }
 ]
 render._withStripped = true
@@ -79287,57 +79315,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "publication-track" }, [
-    _vm.loading
-      ? _c(
-          "div",
-          _vm._l(10, function(i) {
-            return _c("skeleton-box", { key: _vm.currentIndex + i })
-          }),
-          1
-        )
-      : _c(
-          "div",
-          [
-            _vm._l(_vm.posts, function(item, index) {
-              return _c("post-item", {
-                key: _vm.currentIndex + index,
-                attrs: { post_content: item, postload: _vm.loading }
-              })
-            }),
-            _vm._v(" "),
-            _vm.bottom
-              ? _c(
-                  "div",
-                  {
-                    staticClass:
-                      "publication-card d-flex justify-content-center"
-                  },
-                  [_vm._m(0)]
-                )
-              : _vm._e()
-          ],
-          2
-        )
-  ])
+  return _c(
+    "div",
+    { staticClass: "publication-track" },
+    _vm._l(10, function(item) {
+      return _c("post-item", {
+        key: item,
+        attrs: { post_content: false, postload: false }
+      })
+    }),
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "publication-header" }, [
-      _c(
-        "div",
-        {
-          staticClass: "spinner-border text-secondary",
-          attrs: { role: "status" }
-        },
-        [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

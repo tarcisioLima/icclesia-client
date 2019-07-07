@@ -1,6 +1,6 @@
 <template>    
     <!-- PADRÃO -->
-    <div class="publication-card">
+    <!-- <div class="publication-card">
         <div class="publication-header">
             <div class="perfil-photo">
             <img :src="content.author.image" class="img" :alt="content.author.name">
@@ -41,7 +41,7 @@
                 <li class="share" @click="share"><a><span class="total">15</span></a></li>
             </ul>
         </div>
-    </div>
+    </div> -->
 
     <!-- POST GROUP -->
     <!-- <div class="publication-card">
@@ -171,6 +171,56 @@
         </div>
     </div> -->
 
+    <!-- POST QUESTION -->
+    <div class="publication-card">
+        <div class="publication-header">
+            <div class="perfil-photo">
+                <img src="/images/me.jpg" class="img" alt="teste">
+            </div>
+            <div class="user-desc">
+                <h5 class="name"><a href="">
+                Teste <span class="usertag">@teste</span> 
+                </a>
+            </h5>
+            <span class="date">1min atrás</span>
+            </div>
+        </div>
+
+        <div class="publication-body">
+            <div class="post-question">
+                <div class="question-title">
+                    <strong>Resposta N° 92 - </strong> 
+                    <a href="" class="answer-link" title="gmoraiz">@gmoraiz <div><img src="/images/me.jpg" class="img" alt="@gmoraiz"></div></a>
+                </div>
+                <div class="publication-card">
+                    <div class="publication-header">
+                        <div class="perfil-photo">
+                            <img src="/images/tarcisio.jpg" class="img" alt="tarcisio">
+                        </div>
+                        <div class="user-desc">
+                            <h5 class="name">
+                                <a href="">
+                                Tarcísio Thallys <span class="usertag">@tarcisio_thallys</span> 
+                                </a>
+                            </h5>
+                            <span class="date">59m</span>
+                        </div>
+                    </div>
+                    <div class="publication-body gaped">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo ad at fugiat id accusamus et dolor, molestiae dolorem 
+                        eligendi explicabo totam asperiores incidunt voluptatem, quam velit a laudantium dolore quasi.
+                        
+                        <div class="answer-text-box">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit sit exercitationem aliquam fuga? Voluptate doloremque,
+                            recusandae aliquid, quae veritatis facilis possimus maiores rem culpa impedit sint ipsa officia, fugiat eligendi?
+                        </div>
+
+                    </div>
+                </div>                
+            </div>
+
+        </div>        
+    </div>
     
     <!-- POST COMPARTILHAMENTO -->
     <!-- <div class="publication-card">
@@ -282,6 +332,7 @@
             <span class="date">Ontem, às 12:12</span>
             </div>
         </div>
+    
         <div class="publication-body">
             Este é um exemplo de compartilhamento de vídeo com o iframe do youtube.
             <div class="shared-video">
@@ -296,6 +347,8 @@
             </ul>
         </div> 
     </div>-->    
+
+
 </template>
 
 <script>

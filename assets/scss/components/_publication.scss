@@ -312,11 +312,10 @@
                                     }
                                 }
                             }
-
                         }
 
                         //Mobile adjust for post-profile
-                        @media (max-width: 568px){
+                        @media (max-width: $xs){
                             .frame{
                                 width: 45px;
                                 height: 45px;
@@ -333,9 +332,81 @@
                                 }
                             }
                         }
-                    }                    
+                    }   
+                    
+                    //post question
+                    .post-question{
+                        margin-top: 10px;
+                        border-radius: 10px;
+                        border: 1px solid darken($gray, 10%);
+                        padding: 10px;
 
+                        & > .publication-card{
+                            padding: 0;
 
+                            &, &:hover, & > .publication-body:hover{
+                                border: none!important;
+                            }
+
+                            .publication-body.gaped{
+                                padding-left: 60px;
+                                
+                                .answer-text-box{
+                                    margin-left: -60px;
+                                    padding: 10px;
+                                    border: 1px solid $color-1;
+                                    margin-top: 10px;
+                                    border-radius: 5px;
+
+                                    .hashtag{
+                                        color: $color-1;
+                                    }
+                                }
+                            }                            
+                        }
+
+                        .question{
+                            &-title{
+                                display: flex;
+                                align-items: center;
+                                flex-flow: row wrap;
+                                justify-content: center;
+                                color: $color-1;
+
+                                & > strong{
+                                    text-transform: uppercase;
+                                    font-weight: 700;
+                                    font-size: 1.3em;
+                                }
+
+                                .answer-link{
+                                    display: flex;
+                                    align-items: center;
+                                    flex-flow: row wrap;
+                                    color: $color-1;                                  
+                                    
+                                    img{
+                                        width: 30px;
+                                        height: 30px;
+                                        border-radius: 50%;
+                                        margin-left: 15px;
+                                    }
+                                }
+                            }
+                        }
+
+                        @media(max-width: $xs){
+                            & > .publication-card{
+                                .publication-body.gaped{
+                                    padding-left: 0;
+
+                                    .answer-text-box{
+                                        margin-left: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
 
                     //share external link
                     .shared-link-content{
