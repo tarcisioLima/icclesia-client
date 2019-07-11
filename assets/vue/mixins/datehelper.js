@@ -4,7 +4,7 @@ moment.createFromInputFallback = function(config) {
     config._d = new Date(config._i);
 };
 
-export const dateMixin = {
+export const datemixin = {
     methods: {
         publicationDate(value){
             let date        = moment(value);

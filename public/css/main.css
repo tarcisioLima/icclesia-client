@@ -10689,8 +10689,9 @@ input[type=checkbox].is-invalid + .invalid-feedback {
   overflow: hidden;
 }
 .publications-wrapper .publication-track .publication-card .publication-body .post-profile .frame {
-  width: 35%;
+  width: 210px;
   margin-bottom: 0;
+  overflow: hidden;
 }
 .publications-wrapper .publication-track .publication-card .publication-body .post-profile .frame .img {
   width: 100%;
@@ -10699,7 +10700,7 @@ input[type=checkbox].is-invalid + .invalid-feedback {
      object-fit: cover;
 }
 .publications-wrapper .publication-track .publication-card .publication-body .post-profile .content {
-  width: 65%;
+  width: calc(100% - 210px);
   padding: 10px;
 }
 .publications-wrapper .publication-track .publication-card .publication-body .post-profile .content .name {

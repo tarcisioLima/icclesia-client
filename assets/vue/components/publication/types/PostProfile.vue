@@ -1,23 +1,22 @@
 <template>
     <div class="publication-body">            
-        Sigam este raparigão!!!
+        {{ '' }}
         
         <div class="post-profile">
             <figure class="frame">
-                <a href="#" title="Tarcísio"><img src="/images/tarcisio.jpg" alt="" class="img"></a>
+                <a href="#" :title="post.content.name"><img :src="post.content.thumbnail" :alt="post.content.thumbnail" class="img"></a>
             </figure>
             <div class="content">
-                <h3 class="name"><a href="">Tarcísio Thallys da Costa Lima</a></h3>
-                <div class="share"><span class="username">@tarcisio</span> <a href="#" class="btn-default" title="Seguir @tarcisio">Seguir</a></div>
+                <h3 class="name"><a href="">{{ post.content.name }}</a></h3>
+                <div class="share"><span class="username">@{{post.content.username}}</span> <a href="#" class="btn-default" :title="'Seguir @' + post.content.username">Seguir</a></div>
                 <div class="description">
-                    "Perseverar é querer; quem não persevera, não quer, projeta. Quem larga, nunca segurou; 
-                    quem cessa de amar nunca amou." - A. D. Sertillanges
+                   {{ post.content.bio }}
                 </div>
                 <ul class="info-list">
-                    <li><span class="total">250</span> Publicações</li>
-                    <li><span class="total">1.350</span> Seguidores</li>
-                    <li><span class="total">982</span> Seguindo</li>
-                    <li><span class="total">13.029</span> Curtidas</li>
+                    <li><span class="total">{{ post.content.publication_count }}</span> Publicaçõe(s)</li>
+                    <li><span class="total">{{ post.content.follower_count }}</span> Seguidore(s)</li>
+                    <li><span class="total">{{ post.content.following }}</span> Seguindo</li>
+                    <li><span class="total">{{ post.content.like_count }}</span> Curtida(s)</li>
                 </ul>
             </div>
         </div>
@@ -26,6 +25,6 @@
 
 <script>
 export default {
-    
+    props: ['post']
 }
 </script>

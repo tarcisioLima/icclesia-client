@@ -3,7 +3,7 @@
     <div class="publication-body">            
         {{ 'desc' }}          
 
-        <div class="shared-video" v-if="false">
+        <div class="shared-video" v-if="true">
             <iframe class="video-frame" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div> 
 
@@ -150,6 +150,6 @@
 
 <script>
 export default {
-    
+    props: ['post']
 }
 </script>

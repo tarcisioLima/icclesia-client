@@ -1006,12 +1006,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************!*\
   !*** ./assets/vue/mixins/datehelper.js ***!
   \*****************************************/
-/*! exports provided: dateMixin */
+/*! exports provided: datemixin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dateMixin", function() { return dateMixin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "datemixin", function() { return datemixin; });
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -1020,7 +1020,7 @@ moment__WEBPACK_IMPORTED_MODULE_0__["createFromInputFallback"] = function (confi
   config._d = new Date(config._i);
 };
 
-var dateMixin = {
+var datemixin = {
   methods: {
     publicationDate: function publicationDate(value) {
       var date = moment__WEBPACK_IMPORTED_MODULE_0__(value);
@@ -12708,7 +12708,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -12717,7 +12716,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mixins: [_mixins_generics__WEBPACK_IMPORTED_MODULE_1___default.a, _mixins_datehelper__WEBPACK_IMPORTED_MODULE_0__["dateMixin"]],
+  mixins: [_mixins_generics__WEBPACK_IMPORTED_MODULE_1___default.a, _mixins_datehelper__WEBPACK_IMPORTED_MODULE_0__["datemixin"]],
   props: ['post_content'],
   created: function created() {//console.log('posts: ', this.content)
   },
@@ -12800,8 +12799,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_publication_Skeleton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components/publication/Skeleton */ "./assets/vue/components/publication/Skeleton.vue");
 /* harmony import */ var _mixins_generics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/mixins/generics */ "./assets/vue/mixins/generics.js");
 /* harmony import */ var _mixins_generics__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_mixins_generics__WEBPACK_IMPORTED_MODULE_2__);
-//
-//
 //
 //
 //
@@ -13116,7 +13113,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['post']
+});
 
 /***/ }),
 
@@ -13161,8 +13160,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['post']
+});
 
 /***/ }),
 
@@ -13204,8 +13204,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['post']
+});
 
 /***/ }),
 
@@ -13243,8 +13244,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['post']
+});
 
 /***/ }),
 
@@ -13292,7 +13294,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['post']
+});
 
 /***/ }),
 
@@ -79591,69 +79595,92 @@ var render = function() {
     "div",
     { staticClass: "publication-card" },
     [
-      _vm._m(0),
+      _c(
+        "div",
+        {
+          staticClass: "publication-header",
+          attrs: { title: _vm.post_content.user.name }
+        },
+        [
+          _c("div", { staticClass: "perfil-photo" }, [
+            _c("img", {
+              staticClass: "img",
+              attrs: {
+                src: _vm.post_content.user.image,
+                alt: _vm.post_content.user.username
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "user-desc" }, [
+            _c("h5", { staticClass: "name" }, [
+              _c("a", { attrs: { href: "" } }, [
+                _vm._v(_vm._s(_vm.post_content.user.name) + " "),
+                _c("span", { staticClass: "usertag" }, [
+                  _vm._v("@" + _vm._s(_vm.post_content.user.username))
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "date" }, [
+              _vm._v(_vm._s(_vm.publicationDate(_vm.post_content.date)))
+            ])
+          ])
+        ]
+      ),
       _vm._v(" "),
-      _vm.content.type == "COMMOM" ? _c("post-commom") : _vm._e(),
+      _vm.content.type == "COMMOM" || _vm.content.type == "SHARE"
+        ? _c("post-commom", { attrs: { post: _vm.post_content } })
+        : _vm._e(),
       _vm._v(" "),
-      _vm.content.type == "GROUP" ? _c("post-group") : _vm._e(),
+      _vm.content.type == "GROUP"
+        ? _c("post-group", { attrs: { post: _vm.post_content } })
+        : _vm._e(),
       _vm._v(" "),
-      _vm.content.type == "EVENT" ? _c("post-event") : _vm._e(),
+      _vm.content.type == "EVENT"
+        ? _c("post-event", { attrs: { post: _vm.post_content } })
+        : _vm._e(),
       _vm._v(" "),
-      _vm.content.type == "PROFILE" ? _c("post-profile") : _vm._e(),
+      _vm.content.type == "PROFILE"
+        ? _c("post-profile", { attrs: { post: _vm.post_content } })
+        : _vm._e(),
       _vm._v(" "),
-      _vm.content.type == "GROUP" ? _c("post-question") : _vm._e(),
+      _vm.content.type == "GROUP"
+        ? _c("post-question", { attrs: { post: _vm.post_content } })
+        : _vm._e(),
       _vm._v(" "),
-      _vm._m(1)
+      _c("div", { staticClass: "publication-footer" }, [
+        _c("ul", { staticClass: "nav-controls" }, [
+          _c("li", { class: { like: true, active: false } }, [
+            _c("a", [
+              _c("span", { staticClass: "total" }, [
+                _vm._v(_vm._s(_vm.post_content.count.like))
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { class: { comment: true, active: false } }, [
+            _c("a", [
+              _c("span", { staticClass: "total" }, [
+                _vm._v(_vm._s(_vm.post_content.count.comment) + " ")
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { class: { share: true, active: false } }, [
+            _c("a", [
+              _c("span", { staticClass: "total" }, [
+                _vm._v(_vm._s(_vm.post_content.count.share))
+              ])
+            ])
+          ])
+        ])
+      ])
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "publication-header" }, [
-      _c("div", { staticClass: "perfil-photo" }, [
-        _c("img", {
-          staticClass: "img",
-          attrs: { src: "/images/me.jpg", alt: "teste" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "user-desc" }, [
-        _c("h5", { staticClass: "name" }, [
-          _c("a", { attrs: { href: "" } }, [
-            _vm._v("\r\n            Teste "),
-            _c("span", { staticClass: "usertag" }, [_vm._v("@teste")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "date" }, [_vm._v("1min atrás")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "publication-footer" }, [
-      _c("ul", { staticClass: "nav-controls" }, [
-        _c("li", { staticClass: "like" }, [
-          _c("a", [_c("span", { staticClass: "total" }, [_vm._v("432")])])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "comment" }, [
-          _c("a", [_c("span", { staticClass: "total" }, [_vm._v("74")])])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "share active" }, [
-          _c("a", [_c("span", { staticClass: "total" }, [_vm._v("15")])])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -79675,19 +79702,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "publication-track" },
-    _vm._l(10, function(item) {
-      return _c("post-item", {
-        key: item,
-        attrs: { post_content: false, postload: false }
-      })
-    }),
-    1
-  )
+  return _c("div", { staticClass: "publication-track" }, [
+    _vm.loading
+      ? _c(
+          "div",
+          _vm._l(10, function(i) {
+            return _c("skeleton-box", { key: _vm.currentIndex + i })
+          }),
+          1
+        )
+      : _c(
+          "div",
+          [
+            _vm._l(_vm.posts, function(item, index) {
+              return _c("post-item", {
+                key: _vm.currentIndex + index,
+                attrs: { post_content: item, postload: _vm.loading }
+              })
+            }),
+            _vm._v(" "),
+            _vm.bottom
+              ? _c(
+                  "div",
+                  {
+                    staticClass:
+                      "publication-card d-flex justify-content-center"
+                  },
+                  [_vm._m(0)]
+                )
+              : _vm._e()
+          ],
+          2
+        )
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "publication-header" }, [
+      _c(
+        "div",
+        {
+          staticClass: "spinner-border text-secondary",
+          attrs: { role: "status" }
+        },
+        [_c("span", { staticClass: "sr-only" }, [_vm._v("Carregando...")])]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -79763,19 +79828,20 @@ var render = function() {
     _vm._v(
       "            \n        " + _vm._s("desc") + "          \n\n        "
     ),
-    false
-      ? undefined
-      : _c("div", { staticClass: "shared-link-content" }, [
-          _c("figure", { staticClass: "meta-image" }, [
-            _c(
-              "a",
-              { attrs: { href: _vm.content.link.url, target: "_blank" } },
-              [_c("img", { attrs: { src: _vm.content.link.image, alt: "" } })]
-            ),
-            _vm._v(" "),
-            _vm._m(0)
-          ])
+    true
+      ? _c("div", { staticClass: "shared-video" }, [
+          _c("iframe", {
+            staticClass: "video-frame",
+            attrs: {
+              src: "",
+              frameborder: "0",
+              allow:
+                "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
+              allowfullscreen: ""
+            }
+          })
         ])
+      : undefined
   ])
 }
 var staticRenderFns = [
@@ -79815,71 +79881,64 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "publication-body" }, [
-      _vm._v(
-        "            \n    Olá sou uma description bem escrita!!! Só confia :)\n    "
-      ),
-      _c("div", { staticClass: "post-event" }, [
-        _c("figure", { staticClass: "frame-image" }, [
-          _c("a", { attrs: { href: "", target: "_blank" } }, [
-            _c("img", {
-              staticClass: "img",
-              attrs: { src: "/images/post-event-example.jpg", alt: "" }
-            }),
+  return _c("div", { staticClass: "publication-body" }, [
+    _vm._v("            \n    " + _vm._s("") + "\n    "),
+    _c("div", { staticClass: "post-event" }, [
+      _c("figure", { staticClass: "frame-image" }, [
+        _c("a", { attrs: { href: "", target: "_blank" } }, [
+          _c("img", {
+            staticClass: "img",
+            attrs: { src: _vm.post.content.thumbnail, alt: "" }
+          }),
+          _vm._v(" "),
+          _c("figcaption", { staticClass: "wrap-info" }, [
+            _c("h2", { staticClass: "title" }, [
+              _vm._v(_vm._s(_vm.post.content.title))
+            ]),
             _vm._v(" "),
-            _c("figcaption", { staticClass: "wrap-info" }, [
-              _c("h2", { staticClass: "title" }, [
-                _vm._v("1° Encontro Medieval Paulista")
+            _c("ul", { staticClass: "event-info-list" }, [
+              _c("li", { attrs: { title: "Comparecerão" } }, [
+                _vm._v(_vm._s(_vm.post.content.will_count) + " comparecerão")
               ]),
               _vm._v(" "),
-              _c("ul", { staticClass: "event-info-list" }, [
-                _c("li", { attrs: { title: "Comparecerão" } }, [
-                  _vm._v("795 comparecerão")
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "time", attrs: { title: "Horário" } }, [
-                  _vm._v("Amanhã às 17:00")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  { staticClass: "price", attrs: { title: "Entrada" } },
-                  [_vm._v("R$ 100,00")]
-                )
+              _c("li", { staticClass: "time", attrs: { title: "Horário" } }, [
+                _vm._v(_vm._s(_vm.post.content.location))
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "price", attrs: { title: "Entrada" } }, [
+                _vm._v("R$ " + _vm._s(_vm.post.content.price))
               ])
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "event-desc" }, [
-          _vm._v(
-            "\n            Heyyyyyyyy rapaziada! Cá estamos nós, próximos ao primeiro grande encontro em busca da pátria amada. \n            Ela mesmo, a idade média!!! Tragam vossas armaduras, espadas e santinhos!\n        \n            "
-          ),
-          _c("div", { staticClass: "event-controls" }, [
-            _c("a", { staticClass: "btn-default", attrs: { href: "#" } }, [
-              _vm._v("Aceitar")
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "btn-default", attrs: { href: "#" } }, [
-              _vm._v("Recusar")
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "attend-friends", attrs: { href: "#" } }, [
-              _vm._v("10 amigos comparecerão")
-            ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "event-desc" }, [
+        _vm._v(
+          "\n           " +
+            _vm._s(_vm.post.content.description) +
+            "\n\n            "
+        ),
+        _c("div", { staticClass: "event-controls" }, [
+          _c("a", { staticClass: "btn-default", attrs: { href: "#" } }, [
+            _vm._v("Aceitar")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "btn-default", attrs: { href: "#" } }, [
+            _vm._v("Recusar")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "attend-friends", attrs: { href: "#" } }, [
+            _vm._v(
+              _vm._s(_vm.post.content.commom_friends) + " amigo(s) comparecerão"
+            )
           ])
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -79901,61 +79960,58 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "publication-body" }, [
-      _vm._v(
-        "            \n    Ae mulecadinha do mal, cá envoco-vos a embarcar neste grupo!!! Falows! Brotaaaaaaa Familiaaa rayyy\n    "
-      ),
-      _c("div", { staticClass: "post-group" }, [
-        _c("figure", { staticClass: "frame-image" }, [
-          _c("a", { attrs: { href: "", target: "_blank" } }, [
-            _c("img", {
-              staticClass: "img",
-              attrs: { src: "/images/post-group-example.jpg", alt: "" }
-            }),
+  return _c("div", { staticClass: "publication-body" }, [
+    _vm._v(
+      "            \n    Ae mulecadinha do mal, cá envoco-vos a embarcar neste grupo!!! Falows! Brotaaaaaaa Familiaaa rayyy\n    "
+    ),
+    _c("div", { staticClass: "post-group" }, [
+      _c("figure", { staticClass: "frame-image" }, [
+        _c("a", { attrs: { href: "", target: "_blank" } }, [
+          _c("img", {
+            staticClass: "img",
+            attrs: { src: _vm.post.content.thumbnail, alt: "" }
+          }),
+          _vm._v(" "),
+          _c("figcaption", { staticClass: "wrap-info" }, [
+            _c("h2", { staticClass: "title" }, [
+              _vm._v(_vm._s(_vm.post.content.title))
+            ]),
             _vm._v(" "),
-            _c("figcaption", { staticClass: "wrap-info" }, [
-              _c("h2", { staticClass: "title" }, [
-                _vm._v("Santa Zélia e São luis feels")
+            _c("ul", { staticClass: "event-info-list" }, [
+              _c("li", { attrs: { title: "Comparecerão" } }, [
+                _vm._v(_vm._s(_vm.post.content.member_count) + " participantes")
               ]),
               _vm._v(" "),
-              _c("ul", { staticClass: "event-info-list" }, [
-                _c("li", { attrs: { title: "Comparecerão" } }, [
-                  _vm._v("20.955 comparecerão")
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "time", attrs: { title: "Local" } }, [
-                  _vm._v("Santos")
-                ])
+              _c("li", { staticClass: "time", attrs: { title: "Local" } }, [
+                _vm._v("Santos")
               ])
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "event-desc" }, [
-          _vm._v(
-            "\n            Bom esta aqui será a descrição do grupo, sacas? É bom ter isso destacado, já que o grupo será compartilhado, \n            ora caceta! Claro, claro!!! Se ela for muito grande, colocamos os três pontinhos, limitando-a a três linha, morou? Valeu...\n        \n            "
-          ),
-          _c("div", { staticClass: "event-controls" }, [
-            _c("a", { staticClass: "btn-default", attrs: { href: "#" } }, [
-              _vm._v("Participar")
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "attend-friends", attrs: { href: "#" } }, [
-              _vm._v("48 amigos estão aqui")
-            ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "event-desc" }, [
+        _vm._v(
+          "\n            " +
+            _vm._s(_vm.post.content.description) +
+            "\n        \n            "
+        ),
+        _c("div", { staticClass: "event-controls" }, [
+          _c("a", { staticClass: "btn-default", attrs: { href: "#" } }, [
+            _vm._v("Participar")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "attend-friends", attrs: { href: "#" } }, [
+            _vm._v(
+              _vm._s(_vm.post.content.commom_friends) + " amigo(s) estão aqui"
+            )
           ])
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -79977,77 +80033,88 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "publication-body" }, [
-      _vm._v("            \n    Sigam este raparigão!!!\n    \n    "),
-      _c("div", { staticClass: "post-profile" }, [
-        _c("figure", { staticClass: "frame" }, [
-          _c("a", { attrs: { href: "#", title: "Tarcísio" } }, [
-            _c("img", {
-              staticClass: "img",
-              attrs: { src: "/images/tarcisio.jpg", alt: "" }
-            })
+  return _c("div", { staticClass: "publication-body" }, [
+    _vm._v("            \n    " + _vm._s("") + "\n    \n    "),
+    _c("div", { staticClass: "post-profile" }, [
+      _c("figure", { staticClass: "frame" }, [
+        _c("a", { attrs: { href: "#", title: _vm.post.content.name } }, [
+          _c("img", {
+            staticClass: "img",
+            attrs: {
+              src: _vm.post.content.thumbnail,
+              alt: _vm.post.content.thumbnail
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _c("h3", { staticClass: "name" }, [
+          _c("a", { attrs: { href: "" } }, [
+            _vm._v(_vm._s(_vm.post.content.name))
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _c("h3", { staticClass: "name" }, [
-            _c("a", { attrs: { href: "" } }, [
-              _vm._v("Tarcísio Thallys da Costa Lima")
-            ])
+        _c("div", { staticClass: "share" }, [
+          _c("span", { staticClass: "username" }, [
+            _vm._v("@" + _vm._s(_vm.post.content.username))
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "share" }, [
-            _c("span", { staticClass: "username" }, [_vm._v("@tarcisio")]),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "btn-default",
-                attrs: { href: "#", title: "Seguir @tarcisio" }
-              },
-              [_vm._v("Seguir")]
-            )
+          _c(
+            "a",
+            {
+              staticClass: "btn-default",
+              attrs: {
+                href: "#",
+                title: "Seguir @" + _vm.post.content.username
+              }
+            },
+            [_vm._v("Seguir")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "description" }, [
+          _vm._v(
+            "\n               " +
+              _vm._s(_vm.post.content.bio) +
+              "\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "info-list" }, [
+          _c("li", [
+            _c("span", { staticClass: "total" }, [
+              _vm._v(_vm._s(_vm.post.content.publication_count))
+            ]),
+            _vm._v(" Publicaçõe(s)")
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "description" }, [
-            _vm._v(
-              '\n                "Perseverar é querer; quem não persevera, não quer, projeta. Quem larga, nunca segurou; \n                quem cessa de amar nunca amou." - A. D. Sertillanges\n            '
-            )
+          _c("li", [
+            _c("span", { staticClass: "total" }, [
+              _vm._v(_vm._s(_vm.post.content.follower_count))
+            ]),
+            _vm._v(" Seguidore(s)")
           ]),
           _vm._v(" "),
-          _c("ul", { staticClass: "info-list" }, [
-            _c("li", [
-              _c("span", { staticClass: "total" }, [_vm._v("250")]),
-              _vm._v(" Publicações")
+          _c("li", [
+            _c("span", { staticClass: "total" }, [
+              _vm._v(_vm._s(_vm.post.content.following))
             ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("span", { staticClass: "total" }, [_vm._v("1.350")]),
-              _vm._v(" Seguidores")
+            _vm._v(" Seguindo")
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("span", { staticClass: "total" }, [
+              _vm._v(_vm._s(_vm.post.content.like_count))
             ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("span", { staticClass: "total" }, [_vm._v("982")]),
-              _vm._v(" Seguindo")
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("span", { staticClass: "total" }, [_vm._v("13.029")]),
-              _vm._v(" Curtidas")
-            ])
+            _vm._v(" Curtida(s)")
           ])
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

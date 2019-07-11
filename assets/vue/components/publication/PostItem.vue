@@ -2,32 +2,31 @@
 
 <div class="publication-card">
     <!-- HEADER -->
-    <div class="publication-header">
+    <div class="publication-header" :title="post_content.user.name">
         <div class="perfil-photo">
-            <img src="/images/me.jpg" class="img" alt="teste">
+            <img :src="post_content.user.image" class="img" :alt="post_content.user.username">
         </div>
         <div class="user-desc">
-            <h5 class="name"><a href="">
-            Teste <span class="usertag">@teste</span> 
-            </a>
-        </h5>
-        <span class="date">1min atrás</span>
+            <h5 class="name">
+                <a href="">{{ post_content.user.name }} <span class="usertag">@{{ post_content.user.username }}</span></a>
+            </h5>
+            <span class="date">{{ publicationDate(post_content.date) }}</span>
         </div>
     </div>
-    <!-- BODY POST TYPE -->
 
-    <post-commom v-if="content.type == 'COMMOM'"></post-commom>
-    <post-group v-if="content.type == 'GROUP'"></post-group>
-    <post-event v-if="content.type == 'EVENT'"></post-event>
-    <post-profile v-if="content.type == 'PROFILE'"></post-profile>
-    <post-question v-if="content.type == 'GROUP'"></post-question>
+    <!-- BODY POST TYPE -->
+    <post-commom v-if="content.type == 'COMMOM' || content.type == 'SHARE'" :post="post_content"></post-commom>
+    <post-group v-if="content.type == 'GROUP'" :post="post_content"></post-group>
+    <post-event v-if="content.type == 'EVENT'" :post="post_content"></post-event>
+    <post-profile v-if="content.type == 'PROFILE'" :post="post_content"></post-profile>
+    <post-question v-if="content.type == 'GROUP'" :post="post_content"></post-question>
     
     <!-- FOOTER -->
     <div class="publication-footer">
         <ul class="nav-controls">
-            <li class="like"><a><span class="total">432</span></a></li>
-            <li class="comment"><a><span class="total">74</span></a></li>
-            <li class="share active"><a><span class="total">15</span></a></li>
+            <li :class="{'like': true, active: false }"><a><span class="total">{{ post_content.count.like }}</span></a></li>
+            <li :class="{'comment': true, active: false }"><a><span class="total">{{ post_content.count.comment }} </span></a></li>
+            <li :class="{'share': true, active: false }"><a><span class="total">{{ post_content.count.share}}</span></a></li>
         </ul>
     </div>
 </div>    
@@ -35,7 +34,7 @@
 </template>
 <script>
 
-import { dateMixin } from '@/mixins/datehelper'
+import { datemixin } from '@/mixins/datehelper'
 import mixin from '@/mixins/generics'
 
 import postCommom from '@/components/publication/types/PostCommom'
@@ -45,7 +44,7 @@ import postProfile from '@/components/publication/types/PostProfile'
 import postQuestion from '@/components/publication/types/PostQuestion'
 
 export default {
-    mixins: [mixin, dateMixin],
+    mixins: [mixin, datemixin],
 
     props: ['post_content'],
 

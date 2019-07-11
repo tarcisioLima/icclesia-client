@@ -5,23 +5,22 @@
         <div class="post-group">
             <figure class="frame-image">
                 <a href="" target="_blank">
-                    <img src="/images/post-group-example.jpg" class="img" alt="">
+                    <img :src="post.content.thumbnail" class="img" alt="">
                     <figcaption class="wrap-info">                        
-                        <h2 class="title">Santa Zélia e São luis feels</h2>                       
+                        <h2 class="title">{{ post.content.title }}</h2>                       
                         <ul class="event-info-list">
-                            <li title="Comparecerão">20.955 comparecerão</li>
+                            <li title="Comparecerão">{{ post.content.member_count }} participantes</li>
                             <li title="Local" class="time">Santos</li>
                         </ul>
                     </figcaption>
                 </a>
             </figure>
             <div class="event-desc">
-                Bom esta aqui será a descrição do grupo, sacas? É bom ter isso destacado, já que o grupo será compartilhado, 
-                ora caceta! Claro, claro!!! Se ela for muito grande, colocamos os três pontinhos, limitando-a a três linha, morou? Valeu...
+                {{ post.content.description }}
             
                 <div class="event-controls">
                     <a href="#" class="btn-default">Participar</a>
-                    <a href="#" class="attend-friends">48 amigos estão aqui</a>
+                    <a href="#" class="attend-friends">{{ post.content.commom_friends }} amigo(s) estão aqui</a>
                 </div>
             </div>
         </div>
@@ -30,6 +29,6 @@
 
 <script>
 export default {
-    
+    props: ['post']
 }
 </script>
