@@ -63,6 +63,7 @@ export default {
                     this.posts = this.posts.concat(response.data) 
                     this.currentIndex++                   
                 }else{
+                    //this.bottom = false
                     console.log('Não há novos posts')
                 }
                                

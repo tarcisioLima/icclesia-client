@@ -134,7 +134,7 @@
                                 flex-flow: column wrap;
                                 justify-content: flex-end;
                                 padding: 15px 15px 10px 15px;
-                                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.60) 1%, rgba(0,0,0,0) 50%);
+                                background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,1) 100%);
                                 
                                 .title{
                                     color: $white;
@@ -223,11 +223,6 @@
                     
                     //post-group specific changes
                     .post-group{
-                        .frame-image{
-                            .wrap-info{
-                                background: rgba(0, 0, 0, 0.2);
-                            }
-                        }
                         .event-desc{
                             font-size: 13px;
                             line-height: 1.3;

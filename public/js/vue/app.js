@@ -12939,6 +12939,7 @@ __webpack_require__.r(__webpack_exports__);
           _this2.posts = _this2.posts.concat(response.data);
           _this2.currentIndex++;
         } else {
+          //this.bottom = false
           console.log('Não há novos posts');
         }
 

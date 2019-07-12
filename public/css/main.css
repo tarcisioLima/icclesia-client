@@ -10604,7 +10604,7 @@ input[type=checkbox].is-invalid + .invalid-feedback {
   flex-flow: column wrap;
   justify-content: flex-end;
   padding: 15px 15px 10px 15px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 1%, rgba(0, 0, 0, 0) 50%);
+  background: linear-gradient(to bottom, transparent 30%, black 100%);
 }
 .publications-wrapper .publication-track .publication-card .publication-body .post-event .frame-image .wrap-info .title, .publications-wrapper .publication-track .publication-card .publication-body .post-group .frame-image .wrap-info .title {
   color: #ffffff;
@@ -10673,9 +10673,6 @@ input[type=checkbox].is-invalid + .invalid-feedback {
 }
 .publications-wrapper .publication-track .publication-card .publication-body .post-event:hover .event-desc, .publications-wrapper .publication-track .publication-card .publication-body .post-group:hover .event-desc {
   border-color: #c8d3dc;
-}
-.publications-wrapper .publication-track .publication-card .publication-body .post-group .frame-image .wrap-info {
-  background: rgba(0, 0, 0, 0.2);
 }
 .publications-wrapper .publication-track .publication-card .publication-body .post-group .event-desc {
   font-size: 13px;
