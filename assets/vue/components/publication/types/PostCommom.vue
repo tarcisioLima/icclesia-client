@@ -1,21 +1,21 @@
 <template>
     <!-- PADRÃO -->
-    <div class="publication-body">            
-        {{ 'desc' }}          
+    <div class="publication-body">
+        {{ post.content.description }}          
 
-        <div class="shared-video" v-if="true">
+        <div class="shared-video" v-if="false">
             <iframe class="video-frame" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div> 
 
-        <div class="shared-link-content" v-else>
+        <div class="shared-link-content" v-if="post.content.link">
             <figure class="meta-image">
-                <a :href="content.link.url" target="_blank">
-                <img :src="content.link.image" alt="">
+                <a :href="post.content.link.embed.url" target="_blank">
+                    <img :src="post.content.link.embed.image" alt="">
                 </a>
                 <figcaption class="wrap-info">
-                    <h2 class="title">titulo</h2>
-                    <p class="desc">descrição</p>
-                    <a href="" class="link">www.nois.com</a>
+                    <h2 class="title" v-if="post.content.link.embed.title != null">{{ post.content.link.embed.title }}</h2>
+                    <p class="desc">{{ post.content.link.embed.description}}</p>
+                    <a :href="post.content.link.embed.url" class="link" target="_blank">{{ post.content.link.embed.url }}</a>
                 </figcaption>
             </figure>
         </div>

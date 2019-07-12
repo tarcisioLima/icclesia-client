@@ -15,11 +15,12 @@
     </div>
 
     <!-- BODY POST TYPE -->
-    <post-commom v-if="content.type == 'COMMOM' || content.type == 'SHARE'" :post="post_content"></post-commom>
+    <post-share v-if="content.type == 'SHARE'" :post="post_content"></post-share>
+    <post-commom v-if="content.type == 'COMMOM'" :post="post_content"></post-commom>
     <post-group v-if="content.type == 'GROUP'" :post="post_content"></post-group>
     <post-event v-if="content.type == 'EVENT'" :post="post_content"></post-event>
     <post-profile v-if="content.type == 'PROFILE'" :post="post_content"></post-profile>
-    <post-question v-if="content.type == 'GROUP'" :post="post_content"></post-question>
+    <post-question v-if="content.type == 'QUESTION'" :post="post_content"></post-question>
     
     <!-- FOOTER -->
     <div class="publication-footer">
@@ -37,6 +38,7 @@
 import { datemixin } from '@/mixins/datehelper'
 import mixin from '@/mixins/generics'
 
+import postShare from '@/components/publication/types/PostShare'
 import postCommom from '@/components/publication/types/PostCommom'
 import postGroup from '@/components/publication/types/PostGroup'
 import postEvent from '@/components/publication/types/PostEvent'
@@ -112,7 +114,8 @@ export default {
         'post-group': postGroup,
         'post-event': postEvent,
         'post-profile': postProfile,
-        'post-question': postQuestion
+        'post-question': postQuestion,
+        'post-share': postShare
     }
 }
 </script>

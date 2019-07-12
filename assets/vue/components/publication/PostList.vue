@@ -43,10 +43,11 @@ export default {
         axios.get(this.api + 'user/feed?page='+this.currentIndex).then((response) => {
             this.posts = this.posts.concat(response.data)
             this.loading = false
+            this.currentIndex++
         })
         .catch((err) => {
             console.log('deu ruim', err)
-            this.loading = false;
+            this.loading = false
         })
         
         window.addEventListener('scroll', () => {
@@ -58,8 +59,13 @@ export default {
             this.isPostsLoading = true
             axios.get(this.api + 'user/feed?page='+quantity).then((response) => {
                 console.log('res: ', response.data)
-                this.posts = this.posts.concat(response.data)
-                this.currentIndex++
+                if(response.data.length){
+                    this.posts = this.posts.concat(response.data) 
+                    this.currentIndex++                   
+                }else{
+                    console.log('Não há novos posts')
+                }
+                               
                 this.isPostsLoading = false;
             })
             .catch((err) => {

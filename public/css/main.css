@@ -10888,7 +10888,7 @@ input[type=checkbox].is-invalid + .invalid-feedback {
   border: 1px solid #e7ecf0;
   margin-top: 5px;
   border-radius: 10px;
-  padding-bottom: 0;
+  padding-bottom: 15px;
 }
 .publications-wrapper .publication-track .publication-card .publication-body .publication-card .shared-link-content {
   margin-left: -15px;
