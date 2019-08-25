@@ -1,5 +1,5 @@
 #profile-header{
-    background: url('/images/background-profile-example.png');
+    background: url('../images/background-profile-example.png');
     background-size: cover;
     background-repeat: no-repeat;
     height: 300px;
@@ -199,12 +199,12 @@
             display: inline-block;
           
             &.wing-heart{
-                background-image: url('/images/icons/wing-heart.png');
+                background-image: url('../images/icons/wing-heart.png');
                 width: 67px;
                 height: 33px;
             }
             &.church{
-                background-image: url('/images/icons/church.png');
+                background-image: url('../images/icons/church.png');
                 width: 48px;
                 height: 46px;
             }
@@ -227,7 +227,7 @@
             s
             a {               
                 display: inline-block;
-                background: url('/images/icons/socials.png');
+                background: url('../images/icons/socials.png');
                 background-repeat: no-repeat;
                 transition: all 0.2s ease-in-out;
             }

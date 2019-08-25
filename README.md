@@ -1,30 +1,22 @@
-# Icclesia #
+# icclesia
 
-Web client para o projeto icclesia; se trata de uma rede social religiosa, mais especifico ao público católico.
+> 
 
+## Build Setup
 
-## Como Rodar ##
+``` bash
+# install dependencies
+$ npm run install
 
-Rode ``` npm install ``` e depois ``` npm start ``` para iniciar o servidor.
+# serve with hot reload at localhost:3000
+$ npm run dev
 
-## Frontend Dependencies ##
+# build for production and launch server
+$ npm run build
+$ npm run start
 
-``` npm run watch ``` para compilar dependencias frontend.
-
-## .env ##
-Deve-se criar um .env na raiz da projeto, com este conteúdo: 
-
-```
-ENV=development
-DEV_API_URL=http://localhost:8000/api/v1/
-PROD_API_URL=https://monadaweb.com/api/v1/
-DEV_PORT=3000
-PROD_PORT=3000
-SESS_LIFETIME=5
-SECRET=$2y$12$8GUIDNP.dcwwIa.AWb7zWe0xgbBxMTGU6vSL6LGx2/YHw/IdIj/Q6
+# generate static project
+$ npm run generate
 ```
 
-ENV= development ou production
-
-### Template engine: Nunjucks ###
-https://mozilla.github.io/nunjucks/templating.html
+For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).

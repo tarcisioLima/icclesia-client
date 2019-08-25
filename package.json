@@ -1,61 +1,37 @@
 {
-  "name": "icclesia-client",
+  "name": "icclesia",
   "version": "1.0.0",
-  "description": "client server for icclesia project, which's a social media. ",
-  "main": "nodemon -e .js,njk -r dotenv/config ./server.js",
+  "description": "",
+  "author": "Tarcísio Thallys",
+  "private": true,
   "scripts": {
-    "start": "nodemon -e .js,njk -r dotenv/config ./server.js",
-    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tarcisioLima/icclesia-client.git"
-  },
-  "keywords": [
-    "ICCLESIA",
-    "CATHOLICS"
-  ],
-  "author": "Tarcísio Lima",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tarcisioLima/icclesia-client/issues"
-  },
-  "homepage": "https://github.com/tarcisioLima/icclesia-client#readme",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "connect-flash": "^0.1.1",
-    "connect-mongodb-session": "^2.1.1",
-    "dotenv": "^7.0.0",
+    "@nuxtjs/axios": "^5.5.4",
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.3.1",
+    "connect-mongodb-session": "^2.2.0",
+    "cross-env": "^5.2.0",
+    "dotenv": "^8.0.0",
     "express": "^4.16.4",
-    "express-session": "^1.16.1",
+    "express-session": "^1.16.2",
+    "jquery": "^3.4.1",
     "moment": "^2.24.0",
-    "mongodb": "^3.2.6",
-    "nunjucks": "^3.2.0",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.7",
-    "vee-validate": "^2.2.9",
-    "vue": "^2.6.10"
+    "mongodb": "^3.3.0-beta2",
+    "nuxt": "^2.0.0",
+    "nuxt-validate": "^1.0.1",
+    "popper.js": "^1.15.0",
+    "request-promise-native": "^1.0.7"
   },
   "devDependencies": {
-    "@babel/polyfill": "^7.4.3",
-    "axios": "^0.18.0",
-    "bootstrap": "^4.3.1",
-    "cross-env": "^5.2.0",
-    "jquery": "^3.4.0",
-    "laravel-mix": "^4.0.15",
-    "lodash": "^4.17.11",
-    "nodemon": "^1.18.11",
-    "popper.js": "^1.15.0",
-    "resolve-url-loader": "^2.3.1",
-    "sass": "^1.19.0",
-    "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.6.10"
-  },
-  "nodemonConfig": {
-    "ignore": [
-      "public/*",
-      "assets/*"
-    ]
+    "@nuxtjs/style-resources": "^0.1.2",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.18.9",
+    "sass-loader": "^7.1.0"
   }
 }
