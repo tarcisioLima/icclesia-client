@@ -13,18 +13,23 @@
     
     <nuxt />
 
-    <login-modal/>
-    <register-modal/>  
+    <login-modal @isLogged="login" @goHome="$router.push('/')" />
+    <register-modal @goHome="$router.push('/')" />  
 </div>
 </template>
 
 <script>
-import Nav from '@/layouts/partials/IndexNav'
-import LoginModal from '@/layouts/partials/LoginModal'
-import RegisterModal from '@/layouts/partials/RegisterModal'
+import Nav from '@/components/partials/IndexNav'
+import LoginModal from '@/components/partials/LoginModal'
+import RegisterModal from '@/components/partials/RegisterModal'
 
 export default {
-
+    methods: {
+        login(){
+            $('#modalLogin').modal('hide')
+            this.$router.push('/feed')
+        }
+    },
     components: {
        'navigation': Nav,
        'login-modal': LoginModal,

@@ -1,13 +1,13 @@
 import Api from '@/api'
 
 export const state = () => ({
-    user: null
+    token: null
 })
 
 export const mutations = {
-    set_user (state, data) {
-        state.user = data
-    }
+    setToken(state, token){
+        state.token = token
+    },
 }
 
 export const actions = {
@@ -15,7 +15,7 @@ export const actions = {
         return Api.auth.login(data)
         .then(response => {
             if(response.data.hasOwnProperty('token')){
-                commit('set_user', response.data)
+                commit('setToken', response.data)
             }
             return response
         })
@@ -23,3 +23,8 @@ export const actions = {
     }
 }
 
+export const getters = {  
+    isAuthenticated(state){
+        return state.token != null
+    }
+}

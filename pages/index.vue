@@ -17,12 +17,13 @@
                 <img class="img" src="/images/home/virgem-maria-5.jpg" alt="Virgem Maria 5">
             </div>
         </div>
+         <nuxt-child/>
     </div>
+
 </template>
 
 <script>
 export default {
-    layout: 'index',
-    components: {}
+    layout: 'index'
 }
 </script>

@@ -13,7 +13,7 @@ router.post('/login', (req, res) => {
             res.status(200).send({msg: body.msg, status: false})            
         }
     }).catch((err) => {
-        console.log('erro: ', err)
+        //console.log('erro: ', err)
         res.status(500).send('Houve um erro na API :(')
     });
 })
@@ -23,7 +23,7 @@ router.post('/register', (req, res) => {
         console.log('resposta: ', body)
         res.status(200).send({status: true})
     }).catch((err) => {
-        console.log('caiu no erro: ', err.error )   
+        //console.log('caiu no erro: ', err.error )   
         res.status(200).send(err.error)
     });
 })

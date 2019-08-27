@@ -4,7 +4,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Login</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" @click="$emit('goHome')"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-warning" role="alert" v-if="alert">{{ alertmsg }}</div>
@@ -67,18 +67,15 @@ export default {
             this.$validator.validateAll().then((v) => {
                 if(v) {
                     this.loader = true; 
-
-                    this.$store.dispatch('login', {
-                        user: this.email,
-                        password: this.password
-                    })
+                    this.$store.dispatch('login', {user: this.email, password: this.password})
+                    
                     .then((response) => {
                         if(!response.data.hasOwnProperty('token')){
                             this.alertmsg = response.data.msg
                             this.alert = true
                         }else{
                             this.alert = false
-                            //window.location.href="/feed"
+                            this.$emit('isLogged')
                         }
                         this.loader = false;
                     })
@@ -88,28 +85,6 @@ export default {
                         this.alert = true
                         this.loader = false
                     });
-
-                    // this.$axios.post(this.basepath + 'auth/login', {
-                    //     user: this.email,
-                    //     password: this.password
-                    // })
-                    // .then((response) => {                        
-                    //     console.log('then: ', response)
-                    //     if(!response.data.status){
-                    //         this.alertmsg = response.data.msg
-                    //         this.alert = true
-                    //     }else{
-                    //         this.alert = false
-                    //         window.location.href="/feed"
-                    //     }
-                    //     this.loader = false;
-                    // })
-                    // .catch((error) => {
-                    //     console.log(error)
-                    //     this.alertmsg = error.data
-                    //     this.alert = true
-                    //     this.loader = false
-                    // });
                 }
             })
         },        

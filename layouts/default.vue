@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import GenericNavbar from '@/layouts/partials/GenericNavbar'
+import GenericNavbar from '@/components/partials/GenericNavbar'
 
 export default {
     components: {

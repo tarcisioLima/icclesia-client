@@ -9,11 +9,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#" @click.prevent="openModal('#modalLogin')">Entrar</a>
+                    <li class="nav-item active">                       
+                        <nuxt-link to="/login" class="nav-link">Entrar</nuxt-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" @click.prevent="openModal('#modalRegister')">Registrar-se</a>
+                        <nuxt-link to="/registrar" class="nav-link">Registrar-se</nuxt-link>               
                     </li>  
                     <li class="nav-item">
                         <a class="nav-link" href="#">Igrejas próximas <i class="material-icons ml-1">search</i></a>
@@ -28,12 +28,6 @@
 
 
 export default {
-    props: ['logo'],
-
-    methods: {
-        openModal(id){
-            $(id).modal()
-        },       
-    }    
+    props: ['logo']  
 }
 </script>

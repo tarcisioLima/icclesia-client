@@ -21,7 +21,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#867444', height: '3px' },
   /*
   ** Global CSS
   */
@@ -31,7 +31,10 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ['~plugins/bootstrap.js'],
+  plugins: [
+    '~plugins/bootstrap.js',
+    '~plugins/date-filter'
+  ],
   /*
   ** Nuxt.js modules
   */
@@ -63,5 +66,13 @@ module.exports = {
     */
     extend(config, ctx) {     
     }
+  },
+  router: {
+    linkActiveClass: 'active'
+  },
+  //srcDir: 'client-app/' USADO PARA MUDAR A ESTRUTURA DE PASTAS, CASO QUEIRA DEIXAR TODO NUXT DENTRO DE UMA SUBPASTA
+  transition: {
+    name: 'fade',
+    mode: 'out-in'
   }
 }
