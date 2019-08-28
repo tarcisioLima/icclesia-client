@@ -67,11 +67,11 @@ export default {
             this.$validator.validateAll().then((v) => {
                 if(v) {
                     this.loader = true; 
-                    this.$store.dispatch('login', {user: this.email, password: this.password})
+                    this.$store.dispatch('authenticateUser', {user: this.email, password: this.password})
                     
-                    .then((response) => {
-                        if(!response.data.hasOwnProperty('token')){
-                            this.alertmsg = response.data.msg
+                    .then((data) => {
+                        if(!data.hasOwnProperty('token')){
+                            this.alertmsg = data.msg
                             this.alert = true
                         }else{
                             this.alert = false

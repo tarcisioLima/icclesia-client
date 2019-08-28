@@ -1,30 +1,60 @@
 import Api from '@/api'
 
 export const state = () => ({
-    token: null
+    token: null,
+    user: null
 })
 
 export const mutations = {
     setToken(state, token){
         state.token = token
     },
+    setUser(state, user){
+        state.user = user
+    },
+    logoutUser(){
+        state.token = null
+        state.user = null
+    }
 }
 
 export const actions = {
-    login ({commit}, data) {
-        return Api.auth.login(data)
-        .then(response => {
-            if(response.data.hasOwnProperty('token')){
-                commit('setToken', response.data)
+    nuxtServerInit(vuexContext, context){ 
+        let userdata = context.req.session.user
+
+        if (userdata) {          
+            vuexContext.commit('setToken', userdata.token)
+            vuexContext.commit('setUser', userdata)
+        }
+       
+    },
+    authenticateUser({commit}, payload) {
+        return Api.auth.login(payload)
+        .then(({data}) => {
+            if(data.hasOwnProperty('token')){               
+                commit('setToken', data.token)
+                commit('setUser', {name: data.name, email: data.email, username: data.username, id: data.user_id})             
+                //localStorage.setItem('token', data.token)
+                //localStorage.setItem('expiration', data.expiration)
             }
-            return response
-        })
-        .catch((e) => e)        
-    }
+            return data
+            
+        }).catch((e) => e)        
+    },
+    logOut(vuexContext, req){
+        vuexContext.commit('logoutUser')   
+        this.$axios.post('/auth/logout')
+
+        
+        // if(process.client){
+        //     localStorage.removeItem('token')
+        //     localStorage.removeItem('expiration')
+        // }
+    }    
 }
 
 export const getters = {  
     isAuthenticated(state){
-        return state.token != null
+        return state.token != null && state.user != null
     }
 }

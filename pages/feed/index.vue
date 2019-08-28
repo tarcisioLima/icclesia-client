@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-4 reset-pdr">
-          
+          <button @click="$store.dispatch('logOut')">logout</button>
         <!-- histories component --> 
         <div class="history-component">
           <ul class="friend-list">
@@ -161,7 +161,7 @@
         <div class="publications-wrapper">
             <h4 class="wtitle">Todas as publicações</h4>
             <!-- publication start here --> 
-            <post-list start=""></post-list>
+            <!-- <post-list start=""></post-list> -->
         </div>
       </div>
       <!-- ! PUBLICATIONS ! --> 
@@ -280,6 +280,7 @@
 import PostList from '@/components/publication/PostList'
 
 export default {
+    middleware: 'auth',
     components: {
         'post-list': PostList
     }

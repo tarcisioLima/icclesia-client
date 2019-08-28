@@ -8,7 +8,8 @@ router.post('/login', (req, res) => {
         if(body.success) {
             req.session.user = body.data
             req.session.save()
-            res.status(200).send(body.data)
+            //console.log('sessao: ', req.session)
+            res.status(200).send({...body.data, expiration: req.session.cookie.expires})
         }else {
             res.status(200).send({msg: body.msg, status: false})            
         }
@@ -27,5 +28,9 @@ router.post('/register', (req, res) => {
         res.status(200).send(err.error)
     });
 })
+
+router.post('/logout', (req, res) => {  
+    req.session.destroy();
+});
 
 module.exports = router
