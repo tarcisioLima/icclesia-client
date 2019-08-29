@@ -20,11 +20,11 @@ export const mutations = {
 
 export const actions = {
     nuxtServerInit(vuexContext, context){ 
-        let userdata = context.req.session.user
-
-        if (userdata) {          
-            vuexContext.commit('setToken', userdata.token)
-            vuexContext.commit('setUser', userdata)
+        let hasUser = context.req.session.user
+        console.log('uu: ', hasUser)
+        if (hasUser) {          
+            vuexContext.commit('setToken', hasUser.token)
+            vuexContext.commit('setUser', hasUser)
         }
        
     },

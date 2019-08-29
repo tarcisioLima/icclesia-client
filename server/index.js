@@ -22,8 +22,8 @@ const store = new MongoDBStore({
 app.use(session({
   name: 'sid',
   secret: process.env.SECRET || 'AveMaria',
-  store: store,
-  resave: true,
+  store: store, 
+  resave: false,
   saveUninitialized: true,
   cookie: { maxAge: 1000 * 60 * 60 * process.env.SESS_LIFETIME || 2 }
 }))

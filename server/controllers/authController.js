@@ -13,8 +13,7 @@ router.post('/login', (req, res) => {
         }else {
             res.status(200).send({msg: body.msg, status: false})            
         }
-    }).catch((err) => {
-        //console.log('erro: ', err)
+    }).catch((err) => {      
         res.status(500).send('Houve um erro na API :(')
     });
 })
@@ -29,8 +28,17 @@ router.post('/register', (req, res) => {
     });
 })
 
-router.post('/logout', (req, res) => {  
-    req.session.destroy();
+router.post('/logout', (req, res) => {      
+    req.session.destroy()
+    res.clearCookie('sid')
+    console.log('sessão: ', req.session)
 });
+
+router.get('/clear', (req, res) =>{    
+    req.session.destroy()
+    res.clearCookie('sid')
+    res.status(200).send('LIMPO')
+})
+
 
 module.exports = router
