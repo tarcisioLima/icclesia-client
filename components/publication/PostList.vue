@@ -4,7 +4,7 @@
             <skeleton-box v-for="i in 10" :key="currentIndex + i"></skeleton-box>
         </div>
         <div v-else>              
-            <post-item v-for="(item, index) in posts" :key="currentIndex + index" :post_content="item" :postload="loading"></post-item>
+            <post-item v-for="(item, index) in $store.getters.getAllPosts" :key="currentIndex + index" :post_content="item" :postload="loading"></post-item>
              
             <!-- New post loader -->
             <div class="publication-card d-flex justify-content-center" v-if="bottom">
@@ -37,23 +37,11 @@ export default {
             bottom: false
         }
     },
-    created(){
-        //fetch first posts
-        this.loading = true;
-        this.$axios.get(this.api + 'user/feed?page='+this.currentIndex).then((response) => {
-            this.posts = this.posts.concat(response.data)
-            this.loading = false
-            this.currentIndex++
-        })
-        .catch((err) => {
-            console.log('deu ruim', err)
-            this.loading = false
-        })
-        
+    mounted(){
         if(process.browser)
             window.addEventListener('scroll', () => {
-                this.bottom = this.bottomVisible()
-            })
+            this.bottom = this.bottomVisible()
+        })
     },
     methods: {
         fetchPosts(quantity = 0){

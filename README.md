@@ -1,6 +1,4 @@
-# icclesia
-
-> 
+# Icclesia
 
 ## Build Setup
 
@@ -19,4 +17,14 @@ $ npm run start
 $ npm run generate
 ```
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+## .env Example
+
+ENV=development
+DEV_API_URL=http://localhost:8000/api/v1/
+PROD_API_URL=https://monadaweb.com/api/v1/
+DEV_PORT=3000
+PROD_PORT=3000
+SESS_LIFETIME=5
+SECRET=$2y$12$8GUIDNP.dcwwIa.AWb7zWe0xgbBxMTGU6vSL6LGx2/YHw/IdIj/Q6
+DBCONNECTION=mongodb://localhost:27017
+DBNAME=IcclesiaDB

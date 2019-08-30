@@ -18,15 +18,7 @@ export const mutations = {
     }
 }
 
-export const actions = {
-    nuxtServerInit(vuexContext, context){ 
-        let hasUser = context.req.session.user
-       
-        if (hasUser) {          
-            vuexContext.commit('setToken', hasUser.token)
-            vuexContext.commit('setUser', hasUser)
-        }
-    },
+export const actions = {    
     authenticateUser({commit}, payload) {
         return Api.auth.login(payload)
         .then(({data}) => {
@@ -38,8 +30,8 @@ export const actions = {
             
         }).catch((e) => e)        
     },
-    logOut(vuexContext, req){
-        vuexContext.commit('logoutUser')   
+    logOut(vxContext, req){
+        vxContext.commit('logoutUser')   
         this.$axios.post('/auth/logout')
     }    
 }

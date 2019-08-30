@@ -33,7 +33,8 @@ module.exports = {
   */
   plugins: [
     '~plugins/bootstrap.js',
-    '~plugins/date-filter'
+    '~plugins/date-filter',
+    '~/plugins/axios.js',
   ],
   /*
   ** Nuxt.js modules
@@ -49,7 +50,10 @@ module.exports = {
           }
         }
       }]
-  ], 
+  ],
+  axios: {
+    baseURL: process.env.DEV_API_URL || 'http://localhost:8000/api/v1/'  
+  },  
   /*
   ** Build configuration
   */

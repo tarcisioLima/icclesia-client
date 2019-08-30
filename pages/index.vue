@@ -24,6 +24,11 @@
 
 <script>
 export default {
-    layout: 'index'
+    layout: 'index',
+    head(){
+        return{
+            title: 'Icclesia - Veritas Perpetua'
+        }
+    }
 }
 </script>
