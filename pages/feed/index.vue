@@ -2,8 +2,7 @@
 <div id="content-wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-lg-3 col-md-4 reset-pdr">
-          <button @click="$store.dispatch('logOut')">logout</button>
+      <div class="col-lg-3 col-md-4 reset-pdr">         
         <!-- histories component --> 
         <div class="history-component">
           <ul class="friend-list">
@@ -281,6 +280,11 @@ import PostList from '@/components/publication/PostList'
 
 export default {
     middleware: 'auth',
+    head() {
+      return {
+        title: `Feed | ${ this.$store.getters['auth/getUser'].name }`
+      }
+    },
     components: {
         'post-list': PostList
     }
