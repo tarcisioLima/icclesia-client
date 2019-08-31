@@ -1,67 +1,67 @@
 <template>
     <div class="publication-track">  
-        <div v-if="loading">
-            <skeleton-box v-for="i in 10" :key="currentIndex + i"></skeleton-box>
+        <!-- <div v-if="loading">
+            <skeleton-box 
+                v-for="i in 10" 
+                :key="currentIndex + i" />
         </div>
-        <div v-else>              
-            <post-item v-for="(item, index) in $store.getters.getAllPosts" :key="currentIndex + index" :post_content="item" :postload="loading"></post-item>
+        <div v-else> -->
+            <post-item  
+                v-for="(item, index) in $store.getters.getAllPosts" 
+                :key="currentIndex + index" 
+                :post_content="item" 
+                :postload="loading" />
              
-            <!-- New post loader -->
+            <!-- LOADER -->
             <div class="publication-card d-flex justify-content-center" v-if="bottom">
                 <div class="publication-header">
                     <div class="spinner-border text-secondary" role="status">
                         <span class="sr-only">Carregando...</span>
                     </div>
                 </div>
-            </div><!-- ! New post loader ! --> 
-        </div>
+            </div>
+            <!-- ## LOADER ## --> 
+        <!-- </div> -->
     </div>
 </template>
 
 <script>
 import PostItem from '@/components/publication/PostItem'
 import Skeleton from '@/components/publication/Skeleton'
-import mixin from '@/assets/mixins/generics'
 
 export default {
-    mixins: [mixin],
     props: {
         start: Object
     },
     data(){
         return{
-            posts: [],
-            loading: true,
+            loading: false,
             isPostsLoading: false,
             currentIndex: 1,
             bottom: false
         }
     },
-    mounted(){
+    mounted(){      
         if(process.browser)
             window.addEventListener('scroll', () => {
-            this.bottom = this.bottomVisible()
-        })
+                this.bottom = this.bottomVisible()
+            })
     },
     methods: {
-        fetchPosts(quantity = 0){
+        fetchPosts(quantity){
             this.isPostsLoading = true
-            this.$axios.get(this.api + 'user/feed?page='+quantity).then((response) => {
-                console.log('res: ', response.data)
-                if(response.data.length){
-                    this.posts = this.posts.concat(response.data) 
-                    this.currentIndex++                   
+            this.$store.dispatch('setPosts', quantity).then(({data}) =>{
+                if(data.length){
+                    this.currentIndex++
                 }else{
-                    //this.bottom = false
-                    console.log('Não há novos posts')
+                    console.log('Sem novos posts.')
                 }
-                               
                 this.isPostsLoading = false;
-            })
-            .catch((err) => {
+            }).catch((e) =>{
                 this.isPostsLoading = false;
-                console.log('deu ruim', err)
+                console.log('Deus ruim: ', e)
             })
+   
         },
         bottomVisible() {
             const scrollY = window.scrollY

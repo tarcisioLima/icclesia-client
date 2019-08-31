@@ -31,10 +31,10 @@ router.post('/register', (req, res) => {
 router.post('/logout', (req, res) => {      
     req.session.destroy()
     res.clearCookie('sid')
-    console.log('sessão: ', req.session)
+    //console.log('sessão: ', req.session)
 });
 
-router.get('/clear', (req, res) =>{    
+router.get('/clear', (req, res) => {    
     req.session.destroy()
     res.clearCookie('sid')
     res.status(200).send('LIMPO')

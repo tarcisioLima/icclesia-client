@@ -160,7 +160,7 @@
         <div class="publications-wrapper">
             <h4 class="wtitle">Todas as publicações</h4>
             <!-- publication start here --> 
-            <!-- <post-list start=""></post-list> -->
+            <post-list />
         </div>
       </div>
       <!-- ! PUBLICATIONS ! --> 

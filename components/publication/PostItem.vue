@@ -10,7 +10,7 @@
             <h5 class="name">
                 <a href="">{{ post_content.user.name }} <span class="usertag">@{{ post_content.user.username }}</span></a>
             </h5>
-            <span class="date">{{ publicationDate(post_content.date) }}</span>
+            <span class="date">{{ post_content.date | postdate }}</span>
         </div>
     </div>
 
@@ -34,10 +34,6 @@
     
 </template>
 <script>
-
-import { datemixin } from '@/assets/mixins/datehelper'
-import * as mixin from '@/assets/mixins/generics'
-
 import postShare from '@/components/publication/types/PostShare'
 import postCommom from '@/components/publication/types/PostCommom'
 import postGroup from '@/components/publication/types/PostGroup'
@@ -46,8 +42,6 @@ import postProfile from '@/components/publication/types/PostProfile'
 import postQuestion from '@/components/publication/types/PostQuestion'
 
 export default {
-    mixins: [mixin, datemixin],
-
     props: ['post_content'],
 
     created(){

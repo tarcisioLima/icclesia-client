@@ -1,4 +1,3 @@
-import Api from '@/api'
 
 export const state = () => ({
     token: null,
@@ -20,7 +19,7 @@ export const mutations = {
 
 export const actions = {    
     authenticateUser({commit}, payload) {
-        return Api.auth.login(payload)
+        return this.$api.auth.login(payload)
         .then(({data}) => {
             if(data.hasOwnProperty('token')){               
                 commit('setToken', data.token)
@@ -31,8 +30,8 @@ export const actions = {
         }).catch((e) => e)        
     },
     logOut(vxContext, req){
-        vxContext.commit('logoutUser')   
-        this.$axios.post('/auth/logout')
+        vxContext.commit('logoutUser')          
+        this.$api.auth.logout()
     }    
 }
 

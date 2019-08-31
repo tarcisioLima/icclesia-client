@@ -13,7 +13,7 @@
                         {{ post.content.user.name }} <span class="usertag">@{{ post.content.user.username }}</span> 
                     </a>
                 </h5>
-                <span class="date">{{ publicationDate(post.content.date) }}</span>
+                <span class="date">{{ post.content.date | postdate }}</span>
             </div>
         </div>
 
@@ -28,8 +28,6 @@
 </template>
 
 <script>
-import { datemixin } from '@/assets/mixins/datehelper'
-
 import postCommom from '@/components/publication/types/PostCommom'
 import postGroup from '@/components/publication/types/PostGroup'
 import postEvent from '@/components/publication/types/PostEvent'
@@ -38,7 +36,6 @@ import postQuestion from '@/components/publication/types/PostQuestion'
 
 export default {
     props: ['post'],
-    mixins: [datemixin],
     components: {
         'post-commom': postCommom,
         'post-group': postGroup,

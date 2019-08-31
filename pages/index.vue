@@ -27,7 +27,7 @@ export default {
     layout: 'index',
     head(){
         return{
-            title: 'Icclesia - Veritas Perpetua'
+            title: 'Icclesia - Pois Nele vivemos, nos movemos e somos'
         }
     }
 }

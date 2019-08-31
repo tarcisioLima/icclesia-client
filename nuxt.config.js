@@ -15,7 +15,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/images/favicon/favicon-32x32.png' }
+      { rel: 'icon', type: 'image/x-icon', href: '/images/favicon/favicon-32x32.png' },
+      { rel: 'stylesheet', href: '/font-awesome-4.7.0/css/font-awesome.min.css' }
     ]
   },
   /*
@@ -34,6 +35,7 @@ module.exports = {
   plugins: [
     '~plugins/bootstrap.js',
     '~plugins/date-filter',
+    '~plugins/api.js',
     '~/plugins/axios.js',
   ],
   /*

@@ -519,7 +519,7 @@
                                 }
 
                                 &.active a, &:hover a{                                 
-                                    &:before, .total {color: darken($color-1, 15%)}
+                                    &:before, .total {color: darken($color-1-light, 15%)}
                                 }
                             }
 
@@ -536,7 +536,7 @@
                             & > a:before{
                                 font-family: FontAwesome;
                                 font-size: 22px;
-                                color: $color-1;
+                                color: $color-1-light;
                                 display: inline-block;
                                 transition: all 0.3s ease-in-out;
                             }
@@ -545,7 +545,7 @@
                             }
                             a{                                
                                 .total{
-                                    color: $color-1;
+                                    color: $color-1-light;
                                     font-size: 14px;
                                     margin-left: 5px;
                                     transition: all 0.3s ease-in-out;

@@ -1,14 +1,12 @@
 import Vue from 'vue'
-import * as moment from 'moment';
+import * as moment from 'moment'
 
 moment.createFromInputFallback = function(config) {  
     config._d = new Date(config._i);
 };
 
-const dateFilter = value => formatDate(value);
-
 function formatDate(inputDate) {
-    let date        = moment(value);
+    let date        = moment(inputDate);
     let now         = moment()
     let today       = moment().format('L')
     let yesterday   = moment().subtract(1, 'day').format('L');
@@ -32,4 +30,6 @@ function formatDate(inputDate) {
     }
 }
 
-Vue.filter('date', dateFilter)
+const dateFilter = (value) => formatDate(value) 
+
+Vue.filter('postdate', dateFilter)
