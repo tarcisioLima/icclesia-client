@@ -136,7 +136,8 @@ export default {
                 term: this.term
             };
 
-            this.$axios.post(this.basepath + 'auth/register', data).then((response) => {
+            this.$store.dispatch('auth/registerUser', data)
+            .then((response) => {
                 if(response.data.hasOwnProperty('status') && response.data.status){
                     this.loader = false
                     this.success = true

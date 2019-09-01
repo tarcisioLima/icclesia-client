@@ -29,6 +29,9 @@ export const actions = {
             
         }).catch((e) => e)        
     },
+    registerUser({commit}, payload){
+        return this.$api.auth.register(payload)            
+    },
     logOut(vxContext, req){
         vxContext.commit('logoutUser')          
         this.$api.auth.logout()
