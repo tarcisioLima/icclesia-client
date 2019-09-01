@@ -7,7 +7,7 @@
         </div>
         <div v-else> -->
             <post-item  
-                v-for="(item, index) in $store.getters.getAllPosts" 
+                v-for="(item, index) in posts" 
                 :key="currentIndex + index" 
                 :post_content="item" 
                 :postload="loading" />
@@ -81,6 +81,11 @@ export default {
     components:{
         'post-item': PostItem,
         'skeleton-box': Skeleton
-    } 
+    },
+    computed:{
+        posts(){
+            return this.$store.getters.getAllPosts;
+        }
+    }
 }
 </script>
