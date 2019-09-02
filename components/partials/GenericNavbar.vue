@@ -60,11 +60,15 @@
                     </div>
                 </li>
                 <li class="item">
-                    <nuxt-link :to="'/perfil/'+ $store.getters['auth/getUser'].username" :title="$store.getters['auth/getUser'].username" class="user-img-box">
+                    <nuxt-link  v-if="$store.getters['auth/getUser'] != null" 
+                                :to="'/perfil/'+ $store.getters['auth/getUser'].username" 
+                                :title="$store.getters['auth/getUser'].username" 
+                                class="user-img-box">
+
                         <figure class="wrap-image">
                             <img src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg" alt="logo">
                         </figure>
-                        <span class="name">{{ $store.getters['auth/getUser'].name }}</span>
+                        <span class="name" v-if="$store.getters['auth/getUser'] != null">{{ $store.getters['auth/getUser'].name }}</span>
                     </nuxt-link>
                 </li>
                 <li class="item">

@@ -6,6 +6,9 @@ export const mutations = {
     setAllPosts(state, posts){
         state.posts = posts
     },
+    clearAllPosts(state){
+        state.posts = []
+    },
     setPosts(state, posts){
         state.posts = [...state.posts, ...posts]
     }
@@ -27,9 +30,15 @@ export const actions = {
     },
     setPosts(vxContext, index){
         return this.$api.post.getPosts(index).then(({data}) =>{
-            console.log('posts:', data)
+            //console.log('posts:', data)
             vxContext.commit('setPosts', data)
         })
+    },
+    clearAllPosts(vxContext){
+        vxContext.commit('clearAllPosts')
+    },
+    likePost(vxContext, postId){
+        return this.$api.post.like(postId).then(({data}) =>{})
     }
 }
 

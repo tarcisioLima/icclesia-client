@@ -27,7 +27,11 @@ export default {
     methods: {
         login(){
             $('#modalLogin').modal('hide')
-            this.$router.push('/feed')
+            
+            this.$store.dispatch('clearAllPosts')
+            this.$store.dispatch('setPosts')
+                .then(() => this.$router.push('/feed'))
+                .catch(() => this.$router.push('/feed'))
         }
     },
     components: {

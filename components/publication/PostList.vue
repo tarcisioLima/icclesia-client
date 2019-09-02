@@ -1,27 +1,20 @@
 <template>
     <div class="publication-track">  
-        <!-- <div v-if="loading">
-            <skeleton-box 
-                v-for="i in 10" 
-                :key="currentIndex + i" />
-        </div>
-        <div v-else> -->
-            <post-item  
-                v-for="(item, index) in posts" 
-                :key="currentIndex + index" 
-                :post_content="item" 
-                :postload="loading" />
-             
-            <!-- LOADER -->
-            <div class="publication-card d-flex justify-content-center" v-if="bottom">
-                <div class="publication-header">
-                    <div class="spinner-border text-secondary" role="status">
-                        <span class="sr-only">Carregando...</span>
-                    </div>
+        <post-item  
+            v-for="(item, index) in posts" 
+            :key="currentIndex + index" 
+            :post_content="item" 
+            :postload="loading" />
+            
+        <!-- LOADER -->
+        <div class="publication-card d-flex justify-content-center" v-if="bottom">
+            <div class="publication-header">
+                <div class="spinner-border text-secondary" role="status">
+                    <span class="sr-only">Carregando...</span>
                 </div>
             </div>
-            <!-- ## LOADER ## --> 
-        <!-- </div> -->
+        </div>
+        <!-- ## LOADER ## --> 
     </div>
 </template>
 
@@ -40,8 +33,8 @@ export default {
             currentIndex: 1,
             bottom: false
         }
-    },
-    mounted(){      
+    }, 
+    mounted(){
         if(process.browser)
             window.addEventListener('scroll', () => {
                 this.bottom = this.bottomVisible()

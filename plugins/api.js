@@ -9,7 +9,9 @@ const apiFactory = axios => ({
       logout: (data) => axios.post(basepath + 'auth/logout', data)
     },
     post: {
-      getPosts: (index = 1) => axios.get(apipath + 'user/feed?page=' + index)
+      getPosts: (index = 1) => axios.get(apipath + 'user/feed?page=' + index),
+      like: (data) => axios.post(apipath + 'user/like', data),
+      unlike: (data) => axios.post(apipath + 'user/unlike', data)
     }
 })
 
