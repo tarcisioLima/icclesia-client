@@ -11,7 +11,7 @@ const apiFactory = axios => ({
     post: {
       getPosts: (index = 1) => axios.get(apipath + 'user/feed?page=' + index),
       like: (data) => axios.post(apipath + 'user/like', data),
-      unlike: (data) => axios.post(apipath + 'user/unlike', data)
+      unlike: (data) => axios.delete(apipath + 'user/unlike/' + data)
     }
 })
 

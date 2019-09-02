@@ -39,6 +39,9 @@ export const actions = {
     },
     likePost(vxContext, postId){
         return this.$api.post.like(postId).then(({data}) =>{})
+    },
+    unlikePost(vxContext, postId){
+        return this.$api.post.unlike(postId).then(({data}) => {})
     }
 }
 

@@ -51,20 +51,21 @@ export default {
     data(){
         return {
             content: this.post_content,
-            likeAction: true
+            canLike: true
         }
     },
 
     methods: {
         like(post){
-            if(this.likeAction){
-                this.likeAction = false
+            if(this.canLike){
+                this.canLike = false
                 
                 if(!post.liked){
                     post.liked = 1
                     post.likes++
-                    axios.post(this.api + 'user/like', {publicationId: post.id}).then((res) => {
-                        this.likeAction = true
+
+                    this.$store.dispatch('likePost', {publicationId: post.id}).then((res) => {
+                        this.canLike = true
                         console.log('like: ', res.data)
                         if(!res.data){
                             post.liked = 0
@@ -72,7 +73,7 @@ export default {
                         }
 
                     }).catch((err) => {
-                        this.likeAction = true  
+                        this.canLike = true  
                         post.liked = 0
                         post.likes--                        
                         console.log('err: ', err)
@@ -81,8 +82,8 @@ export default {
                 }else{
                     post.liked = 0
                     post.likes--
-                    axios.delete(this.api + 'user/unlike/' + post.id).then((res) => {
-                        this.likeAction = true
+                    this.$store.dispatch('unlikePost', post.id).then((res) => {
+                        this.canLike = true
                         console.log('unlike: ', res.data)
                         if(!res.data){
                             post.liked = 1
@@ -90,7 +91,7 @@ export default {
                         }                
 
                     }).catch((err) => {
-                        this.likeAction = true    
+                        this.canLike = true    
                         post.liked = 1
                         post.likes++                
                         console.log('err: ', err)

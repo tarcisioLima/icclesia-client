@@ -20,7 +20,6 @@
 
 <script>
 import PostItem from '@/components/publication/PostItem'
-import Skeleton from '@/components/publication/Skeleton'
 
 export default {
     props: {
@@ -72,8 +71,7 @@ export default {
         }
     },
     components:{
-        'post-item': PostItem,
-        'skeleton-box': Skeleton
+        'post-item': PostItem
     },
     computed:{
         posts(){
