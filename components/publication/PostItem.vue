@@ -25,7 +25,7 @@
     <!-- FOOTER -->
     <div class="publication-footer">
         <ul class="nav-controls">
-            <li :class="{'like': true, active: false }"><a><span class="total">{{ post_content.count.like }}</span></a></li>
+            <li @click="like(post_content)" :class="{'like': true, active: false }"><a><span class="total">{{ post_content.count.like }}</span></a></li>
             <li :class="{'comment': true, active: false }"><a><span class="total">{{ post_content.count.comment }} </span></a></li>
             <li :class="{'share': true, active: false }"><a><span class="total">{{ post_content.count.share}}</span></a></li>
         </ul>
@@ -61,17 +61,13 @@ export default {
                 this.canLike = false
                 
                 if(!post.liked){
-                    post.liked = 1
-                    post.likes++
-
                     this.$store.dispatch('likePost', {publicationId: post.id}).then((res) => {
                         this.canLike = true
                         console.log('like: ', res.data)
                         if(!res.data){
-                            post.liked = 0
-                            post.likes--                           
+                            // post.liked = 0
+                            // post.likes--                           
                         }
-
                     }).catch((err) => {
                         this.canLike = true  
                         post.liked = 0
@@ -80,8 +76,6 @@ export default {
                     })
                     
                 }else{
-                    post.liked = 0
-                    post.likes--
                     this.$store.dispatch('unlikePost', post.id).then((res) => {
                         this.canLike = true
                         console.log('unlike: ', res.data)

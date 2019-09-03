@@ -11,6 +11,13 @@ export const mutations = {
     },
     setPosts(state, posts){
         state.posts = [...state.posts, ...posts]
+    },
+    likePost(state, postId){
+        let postIndex = state.posts.findIndex((item) => item.id == postId)
+        if(postIndex > -1){
+            state.posts[postIndex].count.like++
+            state.posts[postIndex].liked = true
+        }
     }
 }
 
@@ -37,11 +44,14 @@ export const actions = {
     clearAllPosts(vxContext){
         vxContext.commit('clearAllPosts')
     },
-    likePost(vxContext, postId){
-        return this.$api.post.like(postId).then(({data}) =>{})
+    likePost(vxContext, post){
+        console.log('post: ', post)
+        return this.$api.post.like(post).then(({data}) =>{
+            vxContext.dispatch('likePost', post.publicationId)
+        })
     },
-    unlikePost(vxContext, postId){
-        return this.$api.post.unlike(postId).then(({data}) => {})
+    unlikePost(vxContext, post){
+        return this.$api.post.unlike(post).then(({data}) => {})
     }
 }
 

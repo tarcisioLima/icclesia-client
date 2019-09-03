@@ -1,10 +1,12 @@
 <template>
     <div class="publication-track">  
-        <post-item  
-            v-for="(item, index) in posts" 
-            :key="currentIndex + index" 
-            :post_content="item" 
-            :postload="loading" />
+        <transition-group name="zoom" tag="div"> 
+            <post-item  
+                v-for="(item, index) in posts" 
+                :key="currentIndex + index" 
+                :post_content="item" 
+                />                
+        </transition-group>
             
         <!-- LOADER -->
         <div class="publication-card d-flex justify-content-center" v-if="bottom">
@@ -27,7 +29,6 @@ export default {
     },
     data(){
         return{
-            loading: false,
             isPostsLoading: false,
             currentIndex: 1,
             bottom: false
