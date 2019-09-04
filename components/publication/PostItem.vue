@@ -61,10 +61,10 @@ export default {
                 this.canLike = false
                 
                 if(!post.liked){
-                    this.$store.dispatch('likePost', {publicationId: post.id}).then((res) => {
+                    this.$store.dispatch('likePost', {publicationId: parseInt(post.id)}).then((res) => {
                         this.canLike = true
                         console.log('like: ', res.data)
-                        if(!res.data){
+                        if(!res.data){ 
                             // post.liked = 0
                             // post.likes--                           
                         }

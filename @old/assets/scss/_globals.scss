@@ -27,6 +27,12 @@
     padding-left: 0;
 }
 
+.dropdown-item.active, 
+.dropdown-item:active{
+    background-color: $color-1-light;
+    color: $white;
+}
+
 input[type=checkbox].is-invalid + .invalid-feedback{
     display: block;
 }

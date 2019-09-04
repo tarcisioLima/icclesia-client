@@ -24,6 +24,7 @@ import LoginModal from '@/components/partials/LoginModal'
 import RegisterModal from '@/components/partials/RegisterModal'
 
 export default {
+    middleware: ['is-logged'],
     methods: {
         login(){
             $('#modalLogin').modal('hide')

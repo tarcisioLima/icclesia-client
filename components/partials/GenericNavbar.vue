@@ -53,17 +53,17 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="optionsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
                     <div class="dropdown-menu" aria-labelledby="optionsDropdown">
-                        <a class="dropdown-item" href="#">Perfil</a>
+                        <nuxt-link class="dropdown-item" :to="'/perfil/'+$store.getters['auth/getUser'].username">Perfil</nuxt-link>
                         <a class="dropdown-item" href="#">Alterar dados</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" @click.prevent="logoutUser">Sair</a>
                     </div>
                 </li>
                 <li class="item">
-                    <nuxt-link  v-if="$store.getters['auth/getUser'] != null" 
-                                :to="'/perfil/'+ $store.getters['auth/getUser'].username" 
-                                :title="$store.getters['auth/getUser'].username" 
-                                class="user-img-box">
+                    <nuxt-link v-if="$store.getters['auth/getUser'] != null" 
+                        :to="'/perfil/'+ $store.getters['auth/getUser'].username" 
+                        :title="$store.getters['auth/getUser'].username" 
+                        class="user-img-box">
 
                         <figure class="wrap-image">
                             <img src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg" alt="logo">
