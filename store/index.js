@@ -31,7 +31,7 @@ export const actions = {
             vxContext.commit('auth/setUser', userContent)            
         }
         //Get posts
-        return context.app.$axios.get('user/feed')
+        return context.app.$axios.get('/feed')
         .then(({data}) => vxContext.commit('setAllPosts', data))
         .catch((err) => console.log('err: ', err))
     },
