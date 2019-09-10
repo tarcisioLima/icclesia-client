@@ -1,7 +1,7 @@
 <template>
     <div class="publication-track">  
         <transition-group name="zoom" tag="div"> 
-            <post-item  
+            <post-item  @openPost="emitPostLoad"
                 v-for="(item, index) in posts" 
                 :key="currentIndex + index" 
                 :post_content="item" 
@@ -63,6 +63,9 @@ export default {
             const bottomOfPage = visible + scrollY >= pageHeight
             return bottomOfPage || pageHeight < visible
         },
+        emitPostLoad(id){
+            this.$emit('openPost', id)
+        }
     },
     watch: {
         bottom(bottom) {

@@ -33,7 +33,7 @@ export const actions = {
         //Get posts
         return context.app.$axios.get('/feed')
         .then(({data}) => vxContext.commit('setAllPosts', data))
-        .catch((err) => console.log('err: ', err))
+        .catch((err) => console.log('err in post load: ', err))
     },
     setPosts(vxContext, index){
         return this.$api.post.getPosts(index).then(({data}) =>{

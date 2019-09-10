@@ -4,28 +4,29 @@
     <!-- HEADER -->
     <div class="publication-header" :title="post_content.user.name">
         <div class="perfil-photo">
-            <img :src="post_content.user.image" class="img" :alt="post_content.user.username">
+            <img :src="post_content.user.thumbnail" class="img" :alt="post_content.user.username">
         </div>
         <div class="user-desc">
             <h5 class="name">
                 <a href="">{{ post_content.user.name }} <span class="usertag">@{{ post_content.user.username }}</span></a>
             </h5>
-            <span class="date">{{ post_content.date | postdate }}</span>
+            <span class="date" @click="emitPostLoad">{{ post_content.date | postdate }}</span>
         </div>
     </div>
 
     <!-- BODY POST TYPE -->
-    <post-share v-if="content.type == 'SHARE'" :post="post_content"></post-share>
-    <post-commom v-if="content.type == 'COMMOM'" :post="post_content"></post-commom>
-    <post-group v-if="content.type == 'GROUP'" :post="post_content"></post-group>
-    <post-event v-if="content.type == 'EVENT'" :post="post_content"></post-event>
-    <post-profile v-if="content.type == 'PROFILE'" :post="post_content"></post-profile>
-    <post-question v-if="content.type == 'QUESTION'" :post="post_content"></post-question>
-    
+    <div class="main">
+        <post-share v-if="content.type == 'SHARE'" :post="post_content"></post-share>
+        <post-commom v-if="content.type == 'COMMOM'" :post="post_content"></post-commom>
+        <post-group v-if="content.type == 'GROUP'" :post="post_content"></post-group>
+        <post-event v-if="content.type == 'EVENT'" :post="post_content"></post-event>
+        <post-profile v-if="content.type == 'PROFILE'" :post="post_content"></post-profile>
+        <post-question v-if="content.type == 'QUESTION'" :post="post_content"></post-question>
+    </div>
     <!-- FOOTER -->
     <div class="publication-footer">
         <ul class="nav-controls">
-            <li @click="like(post_content)" :class="{'like': true, active: false }"><a><span class="total">{{ post_content.count.like }}</span></a></li>
+            <li @click="like(post_content)" :class="{'like': true, active: post_content.flags.liked }"><a><span class="total">{{ post_content.count.like }}</span></a></li>
             <li :class="{'comment': true, active: false }"><a><span class="total">{{ post_content.count.comment }} </span></a></li>
             <li :class="{'share': true, active: false }"><a><span class="total">{{ post_content.count.share}}</span></a></li>
         </ul>
@@ -61,7 +62,7 @@ export default {
                 this.canLike = false
                 
                 if(!post.liked){
-                    this.$store.dispatch('likePost', {publicationId: parseInt(post.id)}).then((res) => {
+                    this.$store.dispatch('likePost', {publication_id: post.id}).then((res) => {
                         this.canLike = true
                         console.log('like: ', res.data)
                         if(!res.data){ 
@@ -94,9 +95,10 @@ export default {
                 //console.log(post)
             }
         },
-        share(){
-
-        }
+        share(){},
+        emitPostLoad(){
+            this.$emit('openPost', this.content.id)
+        },        
     },
     components: {
         'post-commom': postCommom,

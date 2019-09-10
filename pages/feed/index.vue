@@ -160,7 +160,7 @@
         <div class="publications-wrapper">
             <h4 class="wtitle">Todas as publicações</h4>
             <!-- publication start here --> 
-            <post-list />
+            <post-list @openPost="publicationHasOpened"/>
         </div>
       </div>
       <!-- ! PUBLICATIONS ! --> 
@@ -283,6 +283,13 @@ export default {
     head() {
       return {
         title: `Feed | ${ this.$store.getters['auth/getUser'].name }`
+      }
+    },
+    methods: {
+      publicationHasOpened(id){        
+        let postId = this.$store.getters.getAllPosts.findIndex((item) => item.id == id)
+        let post = this.$store.getters.getAllPosts[postId]
+        
       }
     },
     components: {

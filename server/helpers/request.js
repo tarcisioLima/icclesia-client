@@ -1,7 +1,5 @@
 function RequestHelper(){
     this.getOptions = function (endpoint, req, method, json = true, auth = null){
-        //console.log('auth: ', auth)
-        console.log('req: ', req.body)
         return {
             method: method,      
             headers: {
